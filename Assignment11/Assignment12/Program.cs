@@ -19,14 +19,14 @@ namespace Assignment12
             int count;
             int index = 7;
 
-            Customer[] customerArray = new Customer[index];
-            customerArray[0] = new Customer("Anh Minh", 1, "VN1");
-            customerArray[1] = new Customer("Chieu Trang", 2, "VN1");
-            customerArray[2] = new Customer("Tien Doan", 3, "HCM1");
-            customerArray[3] = new Customer("Ha Toan", 4, "HCM1");
-            customerArray[4] = new Customer("Minh Hoang", 5, "VN1");
-            customerArray[5] = new Customer("Thanh Binh", 6, "VA2");
-            customerArray[6] = new Customer("Giao Phung", 7, "VA3");
+            Customer[] customerArray = new Customer[400];
+            customerArray[0] = new Customer("Anh Minh", 0, "VN1");
+            customerArray[1] = new Customer("Chieu Trang", 1, "VN1");
+            customerArray[2] = new Customer("Tien Doan", 2, "HCM1");
+            customerArray[3] = new Customer("Ha Toan", 3, "HCM1");
+            customerArray[4] = new Customer("Minh Hoang", 4, "VN1");
+            customerArray[5] = new Customer("Thanh Binh", 5, "VA2");
+            customerArray[6] = new Customer("Giao Phung", 6, "VA3");
 
             Flight[] flightArray = new Flight[4];
             flightArray[0] = new Flight("VN1", "Vaasa", "Ha Noi", new DateTime(2020, 10, 10, 8, 30, 52));
@@ -39,14 +39,15 @@ namespace Assignment12
             {
                 try
                 {
-                    Console.WriteLine("----------------List of options-----------------");
+                    Console.WriteLine("\n----------------List of options-----------------");
                     Console.WriteLine("1: Create the customer");
                     Console.WriteLine("2: Search the customer name");
                     Console.WriteLine("3: Search the flight id");
                     Console.WriteLine("4: Get all flight information");
+                    Console.WriteLine("exit: Exit the programming");
+                    Console.WriteLine("----------------End of options-----------------\n");
 
-
-                    Console.WriteLine("Please choose your option: ");
+                    Console.Write("Please choose your option: ");
                     option = Console.ReadLine();
                     switch (option)
                     {
@@ -59,8 +60,8 @@ namespace Assignment12
                             {
                                 if (flightArray[i].GetId() == flightId)
                                 {
+                                    customerArray[index] = new Customer(customerName, index, flightId);
                                     index++;
-                                    customerArray = new Customer[index];
                                     break;
                                 } else
                                 {
@@ -74,7 +75,7 @@ namespace Assignment12
                             Console.Write("Please type customer name: ");
                             searchCustomerName = Console.ReadLine();
                             count = 0;
-                            for (int i =0; i < customerArray.Length; i++)
+                            for (int i =0; i < index; i++)
                             {
                                 if (customerArray[i].GetName(searchCustomerName))
                                 {
@@ -105,7 +106,7 @@ namespace Assignment12
                                 Console.WriteLine("Can not find the flight ID ", searchFlightId);
                             }
                             Console.WriteLine("The customer in this flight id: ", searchFlightId);
-                            for (int i = 0; i < customerArray.Length; i++)
+                            for (int i = 0; i < index; i++)
                             {
                                 if (customerArray[i].GetFlightId() == searchFlightId)
                                 {
