@@ -41,7 +41,7 @@ namespace Assignment12
         }
         public override string ToString()
         {
-            return "Id: " + id + ", Name: " + name + ", Flight id: " + flightId;
+            return "Id: " + id + ", Name: " + name + ", Flight id: " + flightId + "\n";
         }
     }
 }

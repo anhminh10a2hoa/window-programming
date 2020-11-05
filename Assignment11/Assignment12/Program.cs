@@ -16,10 +16,11 @@ namespace Assignment12
             string option;
             string customerName;
             string flightId;
-            int count;
             int index = 7;
+            const int max_length = 400;
 
-            Customer[] customerArray = new Customer[400];
+            Service_handler Service_handler = new Service_handler();
+            Customer[] customerArray = new Customer[max_length];
             customerArray[0] = new Customer("Anh Minh", 0, "VN1");
             customerArray[1] = new Customer("Chieu Trang", 1, "VN1");
             customerArray[2] = new Customer("Tien Doan", 2, "HCM1");
@@ -56,75 +57,24 @@ namespace Assignment12
                             customerName = Console.ReadLine();
                             Console.Write("Please type customer flight Id: ");
                             flightId = Console.ReadLine();
-                            for (int i = 0; i < flightArray.Length; i++)
-                            {
-                                if (flightArray[i].GetId() == flightId)
-                                {
-                                    customerArray[index] = new Customer(customerName, index, flightId);
-                                    index++;
-                                    break;
-                                } else
-                                {
-                                    Console.WriteLine("Can not find this flight Id, TRY AGAIN");
-                                    break;
-                                }
-                            }
+                            Service_handler.CreateCustomer(customerName, flightId, index, customerArray, flightArray);
+                            index++;
                             break;
 
                         case "2":
                             Console.Write("Please type customer name: ");
                             searchCustomerName = Console.ReadLine();
-                            count = 0;
-                            for (int i =0; i < index; i++)
-                            {
-                                if (customerArray[i].GetName(searchCustomerName))
-                                {
-                                    Console.WriteLine(customerArray[i].ToString());
-                                    count++;
-                                }
-                            }
-                            if(count == 0)
-                            {
-                                Console.WriteLine("Can not find the customer name ", searchCustomerName);
-                            }
+                            Console.WriteLine(Service_handler.FindCustomer(searchCustomerName, index, customerArray));
                             break;
 
                         case "3":
                             Console.Write("Please type flight id: ");
                             searchFlightId = Console.ReadLine();
-                            count = 0;
-                            for (int i = 0; i < flightArray.Length; i++)
-                            {
-                                if (flightArray[i].GetId() == searchFlightId)
-                                {
-                                    Console.WriteLine(flightArray[i].ToString());
-                                    count++;
-                                }
-                            }
-                            if (count == 0)
-                            {
-                                Console.WriteLine("Can not find the flight ID ", searchFlightId);
-                            }
-                            Console.WriteLine("The customer in this flight id: ", searchFlightId);
-                            for (int i = 0; i < index; i++)
-                            {
-                                if (customerArray[i].GetFlightId() == searchFlightId)
-                                {
-                                    Console.WriteLine(customerArray[i].ToString());
-                                    count++;
-                                }
-                            }
-                            if (count == 0)
-                            {
-                                Console.WriteLine("No customer in this flight id ", searchFlightId);
-                            }
+                            Console.WriteLine(Service_handler.FindFlight(searchFlightId, index, customerArray, flightArray));
                             break;
 
                         case "4":
-                            for (int i = 0; i < flightArray.Length; i++)
-                            {
-                                Console.WriteLine(flightArray[i].ToString());
-                            }
+                            Console.WriteLine(Service_handler.FindAllFlight(flightArray));
                             break;
 
                         case "exit":
@@ -139,7 +89,6 @@ namespace Assignment12
                     Console.WriteLine("Invalide data type!" + Environment.NewLine + e.Message);
                 }
             }
-            
             Console.ReadLine();
         }
     }

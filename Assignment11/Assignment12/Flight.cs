@@ -42,7 +42,7 @@ namespace Assignment12
         }
         public override string ToString()
         {
-            return "Id: " + id + ", From: " + origin + ", To: " + destination + ", Date: " + date;
+            return "Id: " + id + ", From: " + origin + ", To: " + destination + ", Date: " + date + "\n";
         }
     }
 }

@@ -43,6 +43,14 @@ namespace Assignment11
                 }
             }
 
+            for (int i = 0; i < customMatrix3.GetLength(0); i++)
+            {
+                for (int j = 0; j < customMatrix3.GetLength(1); j++)
+                {
+                    customMatrix3[i, j] = r.NextDouble();
+                }
+            }
+
             Console.WriteLine("The first matrix");
             for (int i = 0; i < customMatrix1.GetLength(0); i++)
             {
@@ -60,6 +68,17 @@ namespace Assignment11
                 for (int j = 0; j < customMatrix1.GetLength(1); j++)
                 {
                     Console.Write("{0,6:f2}", customMatrix2[i, j]);
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine();
+
+            Console.WriteLine("The third matrix");
+            for (int i = 0; i < customMatrix3.GetLength(0); i++)
+            {
+                for (int j = 0; j < customMatrix3.GetLength(1); j++)
+                {
+                    Console.Write("{0,6:f2}", customMatrix3[i, j]);
                 }
                 Console.WriteLine();
             }
@@ -99,10 +118,16 @@ namespace Assignment11
 
             /* calculate the multiplication of the matrix */
             for (int i = 0; i < customMatrix1.GetLength(0); i++)
+            {
                 for (int j = 0; j < customMatrix3.GetLength(1); j++)
+                {
                     for (int k = 0; k < customMatrix1.GetLength(1); k++)
-                        multi[i, j] += customMatrix1[i, k] * customMatrix2[k, j];
+                    {
+                        multi[i, j] += customMatrix1[i, k] * customMatrix3[k, j];
+                    }
 
+                }
+            }   
 
             Console.WriteLine("The multiplication of 2 matrix");
             for (int i = 0; i < customMatrix1.GetLength(0); i++)
