@@ -1,0 +1,7 @@
+D:\Window_programming_course\Assignment2\Assignment22\bin\Debug\Assignment22.exe.config
+D:\Window_programming_course\Assignment2\Assignment22\bin\Debug\Assignment22.exe
+D:\Window_programming_course\Assignment2\Assignment22\bin\Debug\Assignment22.pdb
+D:\Window_programming_course\Assignment2\Assignment22\obj\Debug\Assignment22.csproj.CoreCompileInputs.cache
+D:\Window_programming_course\Assignment2\Assignment22\obj\Debug\Assignment22.exe
+D:\Window_programming_course\Assignment2\Assignment22\obj\Debug\Assignment22.pdb
+D:\Window_programming_course\Assignment2\Assignment22\obj\Debug\Assignment22.csprojAssemblyReference.cache
