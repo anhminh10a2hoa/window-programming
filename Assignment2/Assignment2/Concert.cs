@@ -30,13 +30,13 @@ namespace Assignment2
         public static Concert operator ++(Concert c1)
         {
             c1.price += 5;
-            return new Concert(c1.title, c1.location, c1.date, c1.price);
+            return c1;
         }
 
         public static Concert operator --(Concert c1)
         {
             c1.price -= 5;
-            return new Concert(c1.title, c1.location, c1.date, c1.price);
+            return c1;
         }
 
         public static bool operator <(Concert c1, Concert c2)

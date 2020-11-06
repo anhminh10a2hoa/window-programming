@@ -10,25 +10,10 @@ namespace Assignment22
     {
         static void Main(string[] args)
         {
-            string text = "";
+            string text;
 
-            // Random 50 characters and create initialization text
-            char[] characters = new char[50];
-            string chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            Random rand = new Random();
-            for (int i = 0; i < 50; i++)
-            {
-                int num = rand.Next(0, chars.Length - 1);
-                characters[i] = chars[num];
-            }
-
-            Console.WriteLine("Initialization text: \n" + new string(characters));
-
-            Array.Sort(characters);
-            text = new string(characters);
-            TextAnalyzer textAnalyzer = new TextAnalyzer(text);
-
-            Console.WriteLine("After sorting: \n" + textAnalyzer.getText());
+            TextAnalyzer textAnalyzer = new TextAnalyzer(out text);
+            Console.WriteLine("Initialization text: \n" + text + "\n");
 
             SortedList<char, int> sortedList = textAnalyzer.CreateSortedList();
             foreach (var character in sortedList)

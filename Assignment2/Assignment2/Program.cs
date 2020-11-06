@@ -35,7 +35,7 @@ namespace Hw2._1
                     Console.WriteLine("1: Get all concerts information");
                     Console.WriteLine("2: Compare the price of 2 concerts");
                     Console.WriteLine("3: Search the key of concerts");
-                    Console.WriteLine("4: Increase the price of concert");
+                    Console.WriteLine("4: Increase/decrease the price of the concert by 5 euro");
                     Console.WriteLine("exit: Exit the programming");
                     Console.WriteLine("----------------End of options-----------------\n");
 
