@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{62D05315-BDB0-4485-8978-39A6B89E3B51}</ProjectGuid>
+    <ProjectGuid>{705E1F13-E120-40D5-8D1E-A21AFBA95270}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Assignment2</RootNamespace>
-    <AssemblyName>Assignment2</AssemblyName>
+    <RootNamespace>Assignment3</RootNamespace>
+    <AssemblyName>Assignment3</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,10 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Concert.cs" />
-    <Compile Include="ServiceHandler.cs" />
+    <Compile Include="AirlineCompany.cs" />
+    <Compile Include="Flight.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

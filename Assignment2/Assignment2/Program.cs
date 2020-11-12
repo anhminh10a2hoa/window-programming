@@ -19,7 +19,7 @@ namespace Hw2._1
             string concertInput;
             string o;
 
-            Function Function = new Function();
+            ServiceHandler ServiceHandler = new ServiceHandler();
             Hashtable concerts = new Hashtable();
             concerts.Add("MP2017", new Concert("Modena Park 2017", "Modena", new DateTime(2017, 7, 1, 8, 00, 00), 125.00));
             concerts.Add("FSL1980", new Concert("Frank Sinatra Live", "Rio de Janeiro", new DateTime(1980, 1, 26, 8, 00, 00), 110.00));
@@ -45,7 +45,7 @@ namespace Hw2._1
                     {
                         case "1":
                             Console.WriteLine("-----------List of the five highest concerts in the world------------\n");
-                            Console.WriteLine(Function.GetAllConcerts(concerts));
+                            Console.WriteLine(ServiceHandler.GetAllConcerts(concerts));
                             break;
 
                         case "2":
@@ -53,13 +53,13 @@ namespace Hw2._1
                             firstConcert = Console.ReadLine();
                             Console.Write("Please type the second concert: ");
                             secondConcert = Console.ReadLine();
-                            Console.WriteLine(Function.CompareTwoConcerts(firstConcert, secondConcert, concerts));
+                            Console.WriteLine(ServiceHandler.CompareTwoConcerts(firstConcert, secondConcert, concerts));
                             break;
 
                         case "3":
                             Console.Write("Please type the key of the concert: ");
                             keyOfConcert = Console.ReadLine();
-                            Console.WriteLine(Function.GetConcert(keyOfConcert, concerts));
+                            Console.WriteLine(ServiceHandler.GetConcert(keyOfConcert, concerts));
                             break;
 
                         case "4":
@@ -67,7 +67,7 @@ namespace Hw2._1
                             concertInput = Console.ReadLine();
                             Console.Write("Choose increase or decrease: ");
                             o = Console.ReadLine();
-                            Console.WriteLine(Function.OperatorPrice(concertInput, o, concerts));
+                            Console.WriteLine(ServiceHandler.OperatorPrice(concertInput, o, concerts));
                             break;
 
                         case "exit":

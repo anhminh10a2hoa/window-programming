@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Assignment2
 {
-    class Function
+    class ServiceHandler
     {
         public static string GetAllConcerts(Hashtable concerts)
         {
