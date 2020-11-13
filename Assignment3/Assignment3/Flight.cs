@@ -60,7 +60,7 @@ namespace Assignment3
             this.price = price;
         }
 
-        public string GetFlight()
+        public override string ToString()
         {
             return "Id: " + this.id 
                 + "\nOrigin: " + this.origin 

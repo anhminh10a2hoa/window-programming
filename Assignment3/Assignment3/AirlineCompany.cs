@@ -39,5 +39,25 @@ namespace Assignment3
                 return this.collectionFlight[index];
             }
         }
+
+        public string FindAllFlight()
+        {
+            string res = "";
+            for (int i = 0; i < this.collectionFlight.Count(); i++)
+            {
+                res += this.collectionFlight[i].ToString();
+            }
+            return res;
+        }
+
+        public string SearchFlight(string flightId)
+        {
+            string res = "";
+            for (int i = 0; i < this.collectionFlight.Count(); i++)
+            {
+                res += this.collectionFlight[i].FindFlight(flightId);
+            }
+            return res;
+        }
     }
 }

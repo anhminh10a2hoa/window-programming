@@ -14,8 +14,6 @@ namespace Assignment3
             string option;
             string searchFlightId;
 
-            ServiceHandler ServiceHandler = new ServiceHandler();
-
             AirlineCompany FlightCollection = new AirlineCompany("Minh Hoang Airline");
 
             FlightCollection[0] = new Flight("VN1", "Vaasa", "Ha Noi", new DateTime(2020, 10, 10, 8, 30, 52), 850.50);
@@ -30,7 +28,6 @@ namespace Assignment3
                     Console.WriteLine("\n----------------List of options-----------------");
                     Console.WriteLine("1: Get all flight information");
                     Console.WriteLine("2: Search the flight id");
-                    Console.WriteLine("3: Print name of the company");
                     Console.WriteLine("exit: Exit the programming");
                     Console.WriteLine("----------------End of options-----------------\n");
 
@@ -39,17 +36,14 @@ namespace Assignment3
                     switch (option)
                     {
                         case "1":
-                            Console.WriteLine(ServiceHandler.FindAllFlights(FlightCollection));
+                            Console.WriteLine("Here is all the flight information of the " + FlightCollection.getName() + ": \n");
+                            Console.WriteLine(FlightCollection.FindAllFlight());
                             break;
 
                         case "2":
                             Console.Write("Please type flight id: ");
                             searchFlightId = Console.ReadLine();
-                            Console.WriteLine(ServiceHandler.SearchFlight(searchFlightId, FlightCollection));
-                            break;
-
-                        case "3":
-                            Console.Write(FlightCollection.getName());
+                            Console.WriteLine(FlightCollection.SearchFlight(searchFlightId));
                             break;
 
                         case "exit":
