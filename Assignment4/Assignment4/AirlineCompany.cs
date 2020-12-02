@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assignment4
 {
+    delegate string processFlightDelegate(Flight f);
     class AirlineCompany
     {
         private readonly string name;
@@ -60,19 +61,21 @@ namespace Assignment4
             return res;
         }
 
-        public void GetFlightOriginAndDestination(Flight f)
+        public string GetFlightOriginAndDestination(Flight f)
         {
-            Console.WriteLine("From: " + f.Origin + " to " + f.Destination + "\n");
+            return "From: " + f.Origin + " to " + f.Destination;
         }
 
         // For delegate
-        public void GetFlightByPrice(processFlightDelate processDelegate, double price)
+        public string GetFlightByPrice(processFlightDelegate processDelegate, double price)
         {
+            string res = "";
             foreach (Flight f in this.collectionFlight)
             {
                 if (f.Price > price)
-                    processDelegate.Invoke(f);
+                    res += processDelegate(f);
             }
+            return res;
         }
 
         // For action
@@ -84,19 +87,15 @@ namespace Assignment4
                     actionFlight.Invoke(f);
             }
         }
-
+        
+        // For predicate
         public void GetFlightByPricePredicate(Predicate<Flight> predicateFlight)
         {
-            int count = 0;
             foreach (Flight f in this.collectionFlight)
             {
                 if (predicateFlight.Invoke(f))
                 {
                     Console.WriteLine("From: " + f.Origin + " to " + f.Destination + "\n");
-                    count++;
-                }
-                if(count == 1)
-                {
                     break;
                 }
             }

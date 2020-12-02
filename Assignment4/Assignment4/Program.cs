@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assignment4
 {
-    delegate void processFlightDelate(Flight f);
+    
     public class Program
     {
         static void Main(string[] args)
@@ -60,14 +60,14 @@ namespace Assignment4
                             Console.Write("Please type flight price: ");
                             searchPrice = Convert.ToDouble(Console.ReadLine());
                             Console.Write("Here are all of flights less than " + searchPrice + ": \n");
-                            processFlightDelate pfd = new processFlightDelate(FlightCollection.GetFlightOriginAndDestination);
+                            processFlightDelegate pfd = new processFlightDelegate(FlightCollection.GetFlightOriginAndDestination);
                             FlightCollection.GetFlightByPrice(pfd, searchPrice);
                             break;
 
                         case "4":
                             Console.Write("Please type flight price: ");
                             searchPrice = Convert.ToDouble(Console.ReadLine());
-                            Console.Write("Here are all of flights less than " + searchPrice + ": \n");
+                            Console.Write("Here are all of flights less than " + searchPrice + ": \n");                 
                             FlightCollection.GetFlightByPriceAction(actionFlight, searchPrice);
                             break;
 
@@ -88,7 +88,6 @@ namespace Assignment4
                     Console.WriteLine("Invalide data type!" + Environment.NewLine + e.Message);
                 }
             }
-            Console.ReadLine();
         }
     }
 }
