@@ -19,7 +19,32 @@ namespace Assignment5
             this.collectionTicket = new List<Ticket>();
         }
 
-        public string GetInfo(string searchId)
+        public string ID
+        {
+            get { return id; }
+            set { id = value; }
+        }
+
+        public Ticket this[int index]
+        {
+            set
+            {
+                this.collectionTicket.Insert(index, value);
+            }
+            get
+            {
+                return this.collectionTicket[index];
+            }
+        }
+
+        public override string ToString()
+        {
+            return "Id: " + this.id
+                    + "\nName: " + this.firstName + this.lastName
+                    + "\nPhone: " + this.phoneNumber;
+        }
+
+        public virtual string GetInfo(string searchId)
         {
             string res = "";
             if (id.Equals(searchId))
@@ -28,17 +53,26 @@ namespace Assignment5
                 {
                     if (searchId.Equals(this.collectionTicket[i].PassengerID))
                     {
-                        res = "Id: " + this.id
-                        + "\nName: " + this.firstName + this.lastName
-                        + "\nPhone: " + this.phoneNumber
-                        + "\nTicket information: "
-                        + "\nTicket Id: " + this.collectionTicket[i].TicketID
-                        + "\nPrice: " + this.collectionTicket[i].getFinalPrice(this.collectionTicket[i].TicketID)
-                        + "\n" + this.collectionTicket[i].FlightObject.FindFlight(this.collectionTicket[i].FlightObject.Id)
+                        res = this.ToString() + "\n" + this.collectionTicket[i].ToString();
                     }
                 }
             }
             return res;
+        }
+
+        public double GetPrice(string searchId)
+        {
+            if (id.Equals(searchId))
+            {
+                for (int i = 0; i < this.collectionTicket.Count(); i++)
+                {
+                    if (searchId.Equals(this.collectionTicket[i].PassengerID))
+                    {
+                        return this.collectionTicket[i].GetPrice(this.collectionTicket[i].TicketID);
+                    }
+                }
+            }
+            return 0;
         }
     }
 }

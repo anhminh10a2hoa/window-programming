@@ -65,17 +65,22 @@ namespace Assignment5
             this.destination = destination;
             this.date = date;
         }
-        public string FindFlight(string searchId)
+
+        public override string ToString()
         {
-            string res = "";
-            if (id.Equals(searchId))
-            {
-                res = "Id: " + this.id
+            return "Id: " + this.id
                 + "\nOrigin: " + this.origin
                 + "\nDestination: " + this.destination
                 + "\nDate: " + this.date;
+        }
+
+        public string FindFlight(string searchId)
+        {
+            if (id.Equals(searchId))
+            {
+                return this.ToString();
             }
-            return res;
+            return "";
         }
     }
 }

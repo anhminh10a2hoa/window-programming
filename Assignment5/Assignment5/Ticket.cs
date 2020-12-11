@@ -36,18 +36,31 @@ namespace Assignment5
             }
         }
 
-        public Ticket(string ticketID, string passengerID, double price, double extraTax, Flight flightObject)
+        public Ticket(string ticketID, string passengerID, double price, Flight flightObject)
         {
             this.ticketID = ticketID;
             this.passengerID = passengerID;
             this.price = price;
-            this.extraTax = (int)this.flightObject.Date.DayOfWeek == 7 || ((int)this.flightObject.Date.DayOfWeek == 8) ? 7 : 5;
             this.flightObject = flightObject;
+            extraTax = (flightObject.Date.Equals(DayOfWeek.Saturday) || flightObject.Date.Equals(DayOfWeek.Sunday)) ? 7 : 5;
         }
 
-        public double getFinalPrice(string ticketID)
+        public double GetPrice(string searchTicketID)
         {
-            return this.price * (100 + extraTax) / 100;
-        }    
+            if (ticketID.Equals(searchTicketID))
+            {
+                return this.price * (100 + extraTax) / 100; ;
+            }  
+            return 0;
+        }
+
+        public override string ToString()
+        {
+            return "Ticket information: "
+                + "\nTicket Id: " + this.ticketID
+                + "\nPrice: " + this.GetPrice(this.ticketID)
+                + "\n" + this.FlightObject.FindFlight(this.FlightObject.Id);
+        }
+
     }
 }
