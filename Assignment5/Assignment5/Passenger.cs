@@ -9,39 +9,27 @@ namespace Assignment5
     class Passenger
     {
         private string id, firstName, lastName, phoneNumber;
-        List<Ticket> collectionTicket;
-        public Passenger(string id, string firstName, string lastName, string phoneNumber)
+        private List<Ticket> tickets;
+        public Passenger(string id, string firstName, string lastName, string phoneNumber, List<Ticket> tickets)
         {
             this.id = id;
             this.firstName = firstName;
             this.lastName = lastName;
             this.phoneNumber = phoneNumber;
-            this.collectionTicket = new List<Ticket>();
+            this.tickets = tickets;
         }
 
         public string ID
         {
             get { return id; }
-            set { id = value; }
         }
-
-        public Ticket this[int index]
-        {
-            set
-            {
-                this.collectionTicket.Insert(index, value);
-            }
-            get
-            {
-                return this.collectionTicket[index];
-            }
-        }
-
         public override string ToString()
         {
-            return "Id: " + this.id
+            string res = "";
+            res += "Id: " + this.id
                     + "\nName: " + this.firstName + this.lastName
-                    + "\nPhone: " + this.phoneNumber;
+                    + "\nPhone: " + this.phoneNumber + "\n";
+            return res;
         }
 
         public virtual string GetInfo(string searchId)
@@ -49,30 +37,14 @@ namespace Assignment5
             string res = "";
             if (id.Equals(searchId))
             {
-                for (int i = 0; i < this.collectionTicket.Count(); i++)
+                res += this.ToString();
+                res += "List of tickets: \n";
+                foreach (Ticket ticket in tickets)
                 {
-                    if (searchId.Equals(this.collectionTicket[i].PassengerID))
-                    {
-                        res = this.ToString() + "\n" + this.collectionTicket[i].ToString();
-                    }
+                    res += ticket.ToString() + "\n";
                 }
             }
             return res;
-        }
-
-        public double GetPrice(string searchId)
-        {
-            if (id.Equals(searchId))
-            {
-                for (int i = 0; i < this.collectionTicket.Count(); i++)
-                {
-                    if (searchId.Equals(this.collectionTicket[i].PassengerID))
-                    {
-                        return this.collectionTicket[i].GetPrice(this.collectionTicket[i].TicketID);
-                    }
-                }
-            }
-            return 0;
         }
     }
 }

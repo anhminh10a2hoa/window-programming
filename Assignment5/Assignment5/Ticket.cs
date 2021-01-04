@@ -36,6 +36,14 @@ namespace Assignment5
             }
         }
 
+        public double Price
+        {
+            get
+            {
+                return price;
+            }
+        }
+
         public Ticket(string ticketID, string passengerID, double price, Flight flightObject)
         {
             this.ticketID = ticketID;
@@ -54,12 +62,42 @@ namespace Assignment5
             return 0;
         }
 
+        public string getInformationOfFlightAndPassenger(List<Passenger> passengers)
+        {
+            string res = "";
+            res += "+ Flight Information\n" + flightObject.ToString();
+            foreach(Passenger p in passengers)
+            {
+                if (this.passengerID.Equals(p.ID))
+                {
+                    res += "\n+ Passenger Information: \n" + p.GetInfo(passengerID);
+                }
+            }
+            return res;
+        }
+
         public override string ToString()
         {
-            return "Ticket information: "
-                + "\nTicket Id: " + this.ticketID
+            return "\nTicket Id: " + this.ticketID
                 + "\nPrice: " + this.GetPrice(this.ticketID)
-                + "\n" + this.FlightObject.FindFlight(this.FlightObject.Id);
+                + "\nTax: " + this.extraTax
+                + "\n Flight Information: " + flightObject.ToString();
+        }
+
+        public string FindTicket(List<Ticket> tickets, string ticketId)
+        {
+            string res = "";
+            foreach (Ticket ticket in tickets)
+            {
+                if (ticketID.Equals(ticketId))
+                {
+                    res += "\nTicket Id: " + this.ticketID
+                    + "\nPrice: " + this.GetPrice(this.ticketID)
+                    + "\nTax: " + this.extraTax
+                    + "\n Flight Information: " + flightObject.ToString();
+                }
+            }
+            return res;
         }
 
     }

@@ -8,19 +8,38 @@ namespace Assignment5
 {
     class FirstClassPassenger : EconomyPassenger
     {
-        private readonly double bonus;
+        private readonly double bonus = 0;
         private string mealMenu;
-        public FirstClassPassenger(string id, string firstName, string lastName, string phoneNumber, double luggageWeight, string mealMenu) : base(id, firstName, lastName, phoneNumber, luggageWeight)
+
+        public string MealMenu
         {
-            bonus = 2;
+            get
+            {
+                return mealMenu;
+            }
+        }
+
+        public double Bonus
+        {
+            get
+            {
+                return bonus;
+            }
+        }
+        public FirstClassPassenger(string id, string firstName, string lastName, string phoneNumber, List<Ticket> tickets, double luggageWeight, string mealMenu) : base(id, firstName, lastName, phoneNumber, tickets, luggageWeight)
+        {
             this.mealMenu = mealMenu;
+            foreach(Ticket ticket in tickets)
+            {
+                bonus += ticket.Price * 0.02;
+            }
         }
         public override string GetInfo(string searchId)
         {
             string res = "";
             if (base.ID.Equals(searchId))
             {
-                res = base.GetInfo(searchId) + "\nBonus: " + base.GetPrice(searchId) * bonus / 100 + "\nMeal: " + this.mealMenu;
+                res = base.GetInfo(searchId) + "\nBonus: " + this.bonus + "\nMeal: " + this.mealMenu;
             }
             return res;
         }

@@ -1,0 +1,14 @@
+C:\Users\AD\source\repos\Assignment6\Assignment6\bin\Debug\Assignment6.exe.config
+C:\Users\AD\source\repos\Assignment6\Assignment6\bin\Debug\Assignment6.exe
+C:\Users\AD\source\repos\Assignment6\Assignment6\bin\Debug\Assignment6.pdb
+C:\Users\AD\source\repos\Assignment6\Assignment6\obj\Debug\Assignment6.csprojAssemblyReference.cache
+C:\Users\AD\source\repos\Assignment6\Assignment6\obj\Debug\Assignment6.csproj.CoreCompileInputs.cache
+C:\Users\AD\source\repos\Assignment6\Assignment6\obj\Debug\Assignment6.exe
+C:\Users\AD\source\repos\Assignment6\Assignment6\obj\Debug\Assignment6.pdb
+D:\Window_programming_course\Assignment6\Assignment6\obj\Debug\Assignment6.csprojAssemblyReference.cache
+D:\Window_programming_course\Assignment6\Assignment6\obj\Debug\Assignment6.csproj.CoreCompileInputs.cache
+D:\Window_programming_course\Assignment6\Assignment6\obj\Debug\Assignment6.exe
+D:\Window_programming_course\Assignment6\Assignment6\obj\Debug\Assignment6.pdb
+D:\Window_programming_course\Assignment6\Assignment6\bin\Debug\Assignment6.exe.config
+D:\Window_programming_course\Assignment6\Assignment6\bin\Debug\Assignment6.exe
+D:\Window_programming_course\Assignment6\Assignment6\bin\Debug\Assignment6.pdb

@@ -9,7 +9,7 @@ namespace Assignment5
     class EconomyPassenger : Passenger
     {
         private double luggageWeight;
-        public EconomyPassenger(string id, string firstName, string lastName, string phoneNumber, double luggageWeight) : base(id, firstName, lastName, phoneNumber)
+        public EconomyPassenger(string id, string firstName, string lastName, string phoneNumber, List<Ticket> tickets, double luggageWeight) : base(id, firstName, lastName, phoneNumber, tickets)
         {
             this.luggageWeight = luggageWeight;
         }
