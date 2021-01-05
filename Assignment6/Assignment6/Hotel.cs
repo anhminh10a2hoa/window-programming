@@ -7,41 +7,7 @@ using System.IO;
 
 namespace Assignment6
 {
-    interface IHotel
-    {
-        string Name
-        {
-            get;
-            set;
-        }
-        string ConstructionDate
-        {
-            get;
-            set;
-        }
-        string Address
-        {
-            get;
-            set;
-        }
-        int Stars
-        {
-            get;
-            set;
-        }
-        List<Room> RoomList
-        {
-            get;
-            set;
-        }
-        List<Customer> CustomerList
-        {
-            get;
-            set;
-        }
-    }
 
-    [Serializable]
     public class Hotel : IHotel
     {
         private string name, address, constructionDate;
@@ -128,23 +94,27 @@ namespace Assignment6
             this.roomList = roomList;
             this.customerList = customerList;
         }
+        public Hotel()
+        {
+            this.roomList = new List<Room>();
+            this.customerList = new List<Customer>();
+        }
 
         public void WriteToFile(string filePath)
         {
-            StringBuilder result = new StringBuilder();
             try
             {
-                BinaryWriter binaryWriter = new BinaryWriter(new FileStream(filePath, FileMode.Append));
+                BinaryWriter binaryWriter = new BinaryWriter(new FileStream(filePath, FileMode.Create));
                 binaryWriter.Write(name);
                 binaryWriter.Write(constructionDate);
                 binaryWriter.Write(address);
                 binaryWriter.Write(stars);
                 binaryWriter.Write(roomList.Count);
+                binaryWriter.Write(customerList.Count);
                 foreach (var room in roomList)
                 {
                     room.WriteToFile(binaryWriter);
                 }
-                binaryWriter.Write(customerList.Count);
                 foreach (var customer in customerList)
                 {
                     customer.WriteToFile(binaryWriter);
@@ -162,46 +132,52 @@ namespace Assignment6
             
         }
 
-        public string ReadFromFile(string filePath)
+        public void ReadFromFile(string filePath)
         {
-            string nameR, addressR, constructionDateR;
-            int starsR;
-            List<Room> roomListR;
-            List<Customer> customerListR;
             //Here we declare the binary writer and reader objects
             BinaryReader binaryReader = null;
-            StringBuilder result = new StringBuilder();
             //Here we open the file for reading.
             try
             {
                 binaryReader = new BinaryReader(new FileStream(filePath, FileMode.Open));
 
-                //This is an infinite for loop-
+                //Here we read an inventory entry.
                 for (; ; )
                 {
-                    //Here we read an inventory entry.
-
-                    nameR = binaryReader.ReadString();
-                    addressR = binaryReader.ReadString();
-                    constructionDateR = binaryReader.ReadString();
-                    starsR = binaryReader.ReadInt32();
-                    result.Append(string.Format(nameR + " " + addressR + " " + constructionDateR + " " + starsR));
+                    int roomCount, customerCount;
+                    name = binaryReader.ReadString();
+                    address = binaryReader.ReadString();
+                    constructionDate = binaryReader.ReadString();
+                    stars = binaryReader.ReadInt32();
+                    roomCount = binaryReader.ReadInt32();
+                    customerCount = binaryReader.ReadInt32();
+                    for (var i = 0; i < roomCount; i++)
+                    {
+                        var room = new Room();
+                        room.ReadFromFile(binaryReader);
+                        roomList.Add(room);
+                    }
+                    for (var i = 0; i < customerCount; i++)
+                    {
+                        var customer = new Customer();
+                        customer.ReadFromFile(binaryReader);
+                        customerList.Add(customer);
+                    }
                 }
             }
             catch (FileNotFoundException)
             {
-                result.Append(filePath + " not found!");
+                Console.WriteLine(filePath + " not found!");
 
             }
             catch (IOException)
             {
-                result.Append("Error reading " + filePath);
+                Console.WriteLine("Error reading");
             }
             finally
             {
                 binaryReader.Close();
             }
-            return result.ToString();
         }
 
         public override string ToString()
@@ -210,22 +186,16 @@ namespace Assignment6
             res += "Hotel Name: " + this.name + "\n";
             res += "Construction date: " + this.constructionDate + "\n";
             res += "Address: " + this.address + "\n";
-            res += "Stars: " + this.stars + "\n\n";
-            res += "-----------\n";
-            res += "Rooms list:\n";
-            res += "-----------\n\n";
+            res += "Stars: " + this.stars + "\n";
+            res += "\nList of rooms \n";
             foreach (var room in roomList)
             {
-                res += room.ToString() + "\n";
-                res += "\n";
+                res += room.ToString();
             }
-            res += "\n---------------\n";
-            res += "Customers list:\n";
-            res += "---------------\n\n";
+            res += "\nList of customers \n";
             foreach (var customer in customerList)
             {
-                res += customer.ToString() + "\n";
-                res += "\n";
+                res += customer.ToString();
             }
             return res;
         }

@@ -7,40 +7,12 @@ using System.IO;
 
 namespace Assignment6
 {
-    interface IRoom
-    {
-        string RoomNumber
-        {
-            get;
-            set;
-        }
-        int Area
-        {
-            get;
-            set;
-        }
-        string Type
-        {
-            get;
-            set;
-        }
-        string Description
-        {
-            get;
-            set;
-        }
-        double Price
-        {
-            get;
-            set;
-        }
-    }
 
     public class Room : IRoom
     {
-        private int area;
-        private string roomNumber, type, description;
-        private double price;
+        int area;
+        string roomNumber, type, description;
+        double price;
 
         public string RoomNumber
         {
@@ -110,7 +82,22 @@ namespace Assignment6
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message + "\n");
+                Console.WriteLine("Error writting");
+            }
+        }
+
+        public void ReadFromFile(BinaryReader binaryReader)
+        {
+            try
+            {
+                roomNumber = binaryReader.ReadString();
+                area = binaryReader.ReadInt32();
+                type = binaryReader.ReadString();
+                price = binaryReader.ReadDouble();
+                description = binaryReader.ReadString();
+            }
+            catch (IOException) {
+                Console.WriteLine("Error reading");
             }
         }
 
@@ -122,6 +109,21 @@ namespace Assignment6
             this.price = price;
             this.description = description;
         }
+
+        public Room() {}
+
+        public override string ToString()
+        {
+            string res = "";
+            res += "\nRoom number: " + this.roomNumber + "\n";
+            res += "Area: " + this.area + " m2\n";
+            res += "Type: " + this.type + "\n";
+            res += "Price: " + this.price + "\n";
+            res += "Description: " + this.description + "\n";
+            return res;
+        }
+
+       
     }
 }
        

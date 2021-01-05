@@ -7,35 +7,6 @@ using System.IO;
 
 namespace Assignment6
 {
-    interface ICustomer
-    {
-        string Name
-        {
-            get;
-            set;
-        }
-        string Address
-        {
-            get;
-            set;
-        }
-        string RoomNumber
-        {
-            get;
-            set;
-        }
-        string ArrivalDate
-        {
-            get;
-            set;
-        }
-        int StayDuration
-        {
-            get;
-            set;
-        }
-    }
-
     public class Customer : ICustomer
     {
         private string name, address, roomNumber;
@@ -110,6 +81,8 @@ namespace Assignment6
             this.stayDuration = stayDuration;
         }
 
+        public Customer() {}
+
         public void WriteToFile(BinaryWriter binaryWriter)
         {
             try
@@ -122,14 +95,29 @@ namespace Assignment6
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message + "\n");
+                Console.WriteLine("Error writting");
+            }
+        }
+
+        public void ReadFromFile(BinaryReader binaryReader)
+        {
+            try
+            {
+                name = binaryReader.ReadString();
+                address = binaryReader.ReadString();
+                roomNumber = binaryReader.ReadString();
+                arrivalDate = binaryReader.ReadString();
+                stayDuration = binaryReader.ReadInt32();
+            }
+            catch (IOException) {
+                Console.WriteLine("Error reading");
             }
         }
 
         public override string ToString()
         {
             string res = "";
-            res += "Customer name: " + this.name + "\n";
+            res += "\nCustomer name: " + this.name + "\n";
             res += "Address: " + this.address + "\n";
             res += "Room: " + this.roomNumber + "\n";
             res += "Arrival date: " + this.arrivalDate + "\n";
