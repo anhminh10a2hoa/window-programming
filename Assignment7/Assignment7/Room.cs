@@ -1,21 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 using System.Xml;
 using System.Xml.Serialization;
+// Json
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Json;
 
 namespace Assignment7
 {
-    [XmlRoot("room")]
+    [Serializable, XmlType("room"), DataContract]
     public class Room : IRoom
     {
         int area;
         string roomNumber, type, description;
         double price;
-        [XmlElement("roomNumber")]
+        [XmlElement("roomNumber"), DataMember]
         public string RoomNumber
         {
             get
@@ -27,7 +29,7 @@ namespace Assignment7
                 this.roomNumber = value;
             }
         }
-        [XmlElement("area")]
+        [XmlElement("area"), DataMember]
         public int Area
         {
             get
@@ -39,7 +41,7 @@ namespace Assignment7
                 this.area = value;
             }
         }
-        [XmlElement("type")]
+        [XmlElement("type"), DataMember]
         public string Type
         {
             get
@@ -51,7 +53,7 @@ namespace Assignment7
                 this.type = value;
             }
         }
-        [XmlElement("description")]
+        [XmlElement("description"), DataMember]
         public string Description
         {
             get
@@ -63,7 +65,7 @@ namespace Assignment7
                 this.description = value;
             }
         }
-        [XmlElement("price")]
+        [XmlElement("price"), DataMember]
         public double Price
         {
             get
@@ -73,38 +75,6 @@ namespace Assignment7
             set
             {
                 this.price = value;
-            }
-        }
-
-        public void WriteToFile(BinaryWriter binaryWriter)
-        {
-            try
-            {
-                binaryWriter.Write(roomNumber);
-                binaryWriter.Write(area);
-                binaryWriter.Write(type);
-                binaryWriter.Write(price);
-                binaryWriter.Write(description);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Error writting");
-            }
-        }
-
-        public void ReadFromFile(BinaryReader binaryReader)
-        {
-            try
-            {
-                roomNumber = binaryReader.ReadString();
-                area = binaryReader.ReadInt32();
-                type = binaryReader.ReadString();
-                price = binaryReader.ReadDouble();
-                description = binaryReader.ReadString();
-            }
-            catch (IOException)
-            {
-                Console.WriteLine("Error reading");
             }
         }
 
@@ -129,7 +99,5 @@ namespace Assignment7
             res += "Description: " + this.description + "\n";
             return res;
         }
-
-
     }
 }

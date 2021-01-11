@@ -5,3 +5,6 @@ D:\Window_programming_course\Assignment7\Assignment7\obj\Debug\Assignment7.cspro
 D:\Window_programming_course\Assignment7\Assignment7\obj\Debug\Assignment7.csproj.CoreCompileInputs.cache
 D:\Window_programming_course\Assignment7\Assignment7\obj\Debug\Assignment7.exe
 D:\Window_programming_course\Assignment7\Assignment7\obj\Debug\Assignment7.pdb
+D:\Window_programming_course\Assignment7\Assignment7\bin\Debug\Newtonsoft.Json.dll
+D:\Window_programming_course\Assignment7\Assignment7\bin\Debug\Newtonsoft.Json.xml
+D:\Window_programming_course\Assignment7\Assignment7\obj\Debug\Assignment7.csproj.CopyComplete

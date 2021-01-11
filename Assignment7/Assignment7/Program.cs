@@ -20,17 +20,24 @@ namespace Assignment7
             customer.Add(new Customer("Tien Doan", "Vaasa, Finland", "05/01/2021", "2", 4));
             Hotel hotel = new Hotel("Minh Tower", "25/06/2020", "Ha Noi", 5, room, customer);
 
-            // Read and Write Binary
-            hotel.WriteToFile(@"d:\temp\assignment7.txt");
-            var hotelAfterRead = new Hotel();
-            hotelAfterRead.ReadFromFile(@"d:\temp\assignment7.txt");
-            Console.WriteLine(hotelAfterRead.ToString());
+            // Read and Write Serialize
+            Console.WriteLine("\nRead and Write with Serialize\n");
+            hotel.WriteBinarySerialize(@"d:\temp\ass7serialize.dat");
+            var hotelAfterReadFromSerializeFile = Hotel.ReadBinarySerialize(@"d:\temp\ass7serialize.dat");
+            Console.WriteLine(hotelAfterReadFromSerializeFile);
 
             // Read and Write with XML format
             Console.WriteLine("\nRead and Write with XML format\n");
-            Hotel.WriteXML(hotel, @"d:\temp\ass7xml.txt");
-            var hotelAfterReadFromXMLFile = Hotel.ReadXML<Hotel>(@"d:\temp\ass7xml.txt");
+            hotel.WriteXML(@"d:\temp\ass7xml.xml");
+            var hotelAfterReadFromXMLFile = hotel.ReadXML(@"d:\temp\ass7xml.xml");
             Console.WriteLine(hotelAfterReadFromXMLFile);
+
+            // Read and Write with JSON format
+            Console.WriteLine("\nRead and Write with JSON format\n");
+            hotel.WriteJson(@"d:\temp\ass7json.json");
+            var hotelAfterReadFromJSONFile = hotel.ReadJson(@"d:\temp\ass7json.json");
+            Console.WriteLine(hotelAfterReadFromXMLFile);
+
             Console.ReadLine();
         }
     }

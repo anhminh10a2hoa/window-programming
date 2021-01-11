@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Assignment7
 {
-    public class ICustomer
+    public interface ICustomer
     {
         string Name
         {

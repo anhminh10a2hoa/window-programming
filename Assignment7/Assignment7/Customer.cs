@@ -1,21 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
+// XML
 using System.Xml;
 using System.Xml.Serialization;
+// Json
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Json;
 
 namespace Assignment7
 {
-    [XmlRoot("customer")]
+    [Serializable, XmlType("customer"), DataContract]
     public class Customer : ICustomer
     {
         private string name, address, roomNumber;
         string arrivalDate;
         int stayDuration;
-        [XmlElement("name")]
+        [XmlElement("name"), DataMember]
         public string Name
         {
             get
@@ -27,7 +30,7 @@ namespace Assignment7
                 this.name = value;
             }
         }
-        [XmlElement("address")]
+        [XmlElement("address"), DataMember]
         public string Address
         {
             get
@@ -39,7 +42,7 @@ namespace Assignment7
                 this.address = value;
             }
         }
-        [XmlElement("roomNumber")]
+        [XmlElement("roomNumber"), DataMember]
         public string RoomNumber
         {
             get
@@ -51,7 +54,7 @@ namespace Assignment7
                 this.roomNumber = value;
             }
         }
-        [XmlElement("arrivalDate")]
+        [XmlElement("arrivalDate"), DataMember]
         public string ArrivalDate
         {
             get
@@ -63,7 +66,7 @@ namespace Assignment7
                 this.arrivalDate = value;
             }
         }
-        [XmlElement("stayDuration")]
+        [XmlElement("stayDuration"), DataMember]
         public int StayDuration
         {
             get
@@ -86,38 +89,6 @@ namespace Assignment7
         }
 
         public Customer() { }
-
-        public void WriteToFile(BinaryWriter binaryWriter)
-        {
-            try
-            {
-                binaryWriter.Write(name);
-                binaryWriter.Write(address);
-                binaryWriter.Write(roomNumber);
-                binaryWriter.Write(arrivalDate);
-                binaryWriter.Write(stayDuration);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Error writting");
-            }
-        }
-
-        public void ReadFromFile(BinaryReader binaryReader)
-        {
-            try
-            {
-                name = binaryReader.ReadString();
-                address = binaryReader.ReadString();
-                roomNumber = binaryReader.ReadString();
-                arrivalDate = binaryReader.ReadString();
-                stayDuration = binaryReader.ReadInt32();
-            }
-            catch (IOException)
-            {
-                Console.WriteLine("Error reading");
-            }
-        }
 
         public override string ToString()
         {

@@ -1,22 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
+//Serialize
+using System.Runtime.Serialization.Formatters.Binary;
+//XML
 using System.Xml;
 using System.Xml.Serialization;
+// Json
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Json;
 
 namespace Assignment7
 {
-    [XmlRoot("hotel")]
+    [Serializable, XmlRoot("hotel"), DataContract]
     public class Hotel : IHotel
     {
         private string name, address, constructionDate;
         private int stars;
         private List<Room> roomList;
         private List<Customer> customerList;
-        [XmlElement("name")]
+        [XmlElement("name"), DataMember]
         public string Name
         {
             get
@@ -28,7 +33,7 @@ namespace Assignment7
                 this.name = value;
             }
         }
-        [XmlElement("constructionDate")]
+        [XmlElement("constructionDate"), DataMember]
         public string ConstructionDate
         {
             get
@@ -40,7 +45,7 @@ namespace Assignment7
                 this.constructionDate = value;
             }
         }
-        [XmlElement("address")]
+        [XmlElement("address"), DataMember]
         public string Address
         {
             get
@@ -52,7 +57,7 @@ namespace Assignment7
                 this.address = value;
             }
         }
-        [XmlElement("stars")]
+        [XmlElement("stars"), DataMember]
         public int Stars
         {
             get
@@ -64,7 +69,7 @@ namespace Assignment7
                 this.stars = value;
             }
         }
-        [XmlArray("customerList")]
+        [XmlArray("customerList"), XmlArrayItem("customer"), DataMember]
         public List<Customer> CustomerList
         {
             get
@@ -76,7 +81,7 @@ namespace Assignment7
                 this.customerList = value;
             }
         }
-        [XmlArray("roomList")]
+        [XmlArray("roomList"), XmlArrayItem("room"), DataMember]
         public List<Room> RoomList
         {
             get
@@ -104,83 +109,6 @@ namespace Assignment7
             this.customerList = new List<Customer>();
         }
 
-        public void WriteToFile(string filePath)
-        {
-            try
-            {
-                BinaryWriter binaryWriter = new BinaryWriter(new FileStream(filePath, FileMode.Create));
-                binaryWriter.Write(name);
-                binaryWriter.Write(constructionDate);
-                binaryWriter.Write(address);
-                binaryWriter.Write(stars);
-                binaryWriter.Write(roomList.Count);
-                binaryWriter.Write(customerList.Count);
-                foreach (var room in roomList)
-                {
-                    room.WriteToFile(binaryWriter);
-                }
-                foreach (var customer in customerList)
-                {
-                    customer.WriteToFile(binaryWriter);
-                }
-                binaryWriter.Close();
-            }
-            catch (FileNotFoundException)
-            {
-                Console.WriteLine(filePath + " not found!");
-            }
-            catch (IOException)
-            {
-                Console.WriteLine("Error writing to file: " + filePath);
-            }
-
-        }
-
-        public void ReadFromFile(string filePath)
-        {
-            //Here we declare the binary writer and reader objects
-            BinaryReader binaryReader = null;
-            //Here we open the file for reading.
-            try
-            {
-                binaryReader = new BinaryReader(new FileStream(filePath, FileMode.Open));
-
-                //Here we read an inventory entry.
-                for (; ; )
-                {
-                    int roomCount, customerCount;
-                    name = binaryReader.ReadString();
-                    address = binaryReader.ReadString();
-                    constructionDate = binaryReader.ReadString();
-                    stars = binaryReader.ReadInt32();
-                    roomCount = binaryReader.ReadInt32();
-                    customerCount = binaryReader.ReadInt32();
-                    for (var i = 0; i < roomCount; i++)
-                    {
-                        var room = new Room();
-                        room.ReadFromFile(binaryReader);
-                        roomList.Add(room);
-                    }
-                    for (var i = 0; i < customerCount; i++)
-                    {
-                        var customer = new Customer();
-                        customer.ReadFromFile(binaryReader);
-                        customerList.Add(customer);
-                    }
-                }
-            }
-            catch (FileNotFoundException)
-            {
-                Console.WriteLine(filePath + " not found!");
-
-            }
-            catch (IOException){}
-            finally
-            {
-                binaryReader.Close();
-            }
-        }
-
         public override string ToString()
         {
             string res = "";
@@ -201,9 +129,42 @@ namespace Assignment7
             return res;
         }
 
-        public static void WriteXML<T>(T type, string filePathName)
+        public void WriteBinarySerialize(string filePath)
         {
-            XmlSerializer serializer = new XmlSerializer(type.GetType());
+            FileStream fileStream = new FileStream(filePath, FileMode.Append);
+            BinaryFormatter binaryFormatter = new BinaryFormatter();
+            binaryFormatter.Serialize(fileStream, this);
+            fileStream.Flush();
+            fileStream.Close();
+        }
+
+        public static Hotel ReadBinarySerialize(string filePath)
+        {
+            FileStream fileStream = new FileStream(filePath, FileMode.Open);
+            BinaryFormatter binaryFormatter = new BinaryFormatter();
+            object obj = null;
+            try
+            {
+                obj = binaryFormatter.Deserialize(fileStream);
+                if(obj is Hotel)
+                {
+                    Hotel hotel = (Hotel)obj;
+                    fileStream.Close();
+                    return hotel;
+                }
+                return null;
+            }
+            catch(EndOfStreamException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            return null;
+        }
+
+        
+        public void WriteXML(string filePathName)
+        {
+            XmlSerializer serializer = new XmlSerializer(this.GetType());
             XmlWriter xmlWriter = XmlWriter.Create(filePathName, new XmlWriterSettings()
             {
                 OmitXmlDeclaration = true,
@@ -211,19 +172,39 @@ namespace Assignment7
                 Indent = true
 
             });
-            serializer.Serialize(xmlWriter, type);
+            serializer.Serialize(xmlWriter, this);
             xmlWriter.Close();
         }
         //This generic method reeads and returns the content of the XML file
         //in a generic form
-        public static T ReadXML<T>(string FileName)
+        public Hotel ReadXML(string FileName)
         {
             using (var stream = System.IO.File.OpenRead(FileName))
             {
-                var serializer = new XmlSerializer(typeof(T));
-                T data = (T)serializer.Deserialize(stream);
+                var serializer = new XmlSerializer(typeof(Hotel));
+                Hotel data = (Hotel)serializer.Deserialize(stream);
                 return data;
             }
+        }
+
+        public void WriteJson(string filePath)
+        {
+            var serializingSettings = new DataContractJsonSerializerSettings();
+            serializingSettings.UseSimpleDictionaryFormat = true;
+            serializingSettings.DateTimeFormat = new DateTimeFormat("d.M.yyyy");
+            serializingSettings.MaxItemsInObjectGraph = 1000;
+            DataContractJsonSerializer jsonSerializer = new DataContractJsonSerializer(typeof(Hotel), serializingSettings);
+            FileStream fileWriter = new FileStream(filePath, FileMode.Create);
+            jsonSerializer.WriteObject(fileWriter, this);
+            fileWriter.Close();
+        }
+
+        public string ReadJson(string filePath)
+        {
+            StreamReader reader = new StreamReader(filePath);
+            string jsonData = reader.ReadToEnd();
+            reader.Close();
+            return jsonData;
         }
     }
 }
