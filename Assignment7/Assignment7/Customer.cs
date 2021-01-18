@@ -9,6 +9,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
+using System.Text;
 
 namespace Assignment7
 {
@@ -89,7 +90,56 @@ namespace Assignment7
         }
 
         public Customer() { }
+        public void WriteToFile(BinaryWriter binaryWriter)
+        {
+            try
+            {
+                binaryWriter.Write(name);
+                binaryWriter.Write(address);
+                binaryWriter.Write(roomNumber);
+                binaryWriter.Write(arrivalDate);
+                binaryWriter.Write(stayDuration);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error writting");
+            }
+        }
 
+        public void ReadFromFile(BinaryReader binaryReader)
+        {
+            try
+            {
+                name = binaryReader.ReadString();
+                address = binaryReader.ReadString();
+                roomNumber = binaryReader.ReadString();
+                arrivalDate = binaryReader.ReadString();
+                stayDuration = binaryReader.ReadInt32();
+            }
+            catch (IOException)
+            {
+                Console.WriteLine("Error reading");
+            }
+        }
+
+        public string WriteTextToFile(TextWriter textWriter)
+        {
+            StringBuilder result = new StringBuilder();
+            try
+            {
+                textWriter.WriteLine(this.ToString());
+                textWriter.Close();
+            }
+            catch (FileNotFoundException)
+            {
+                result.Append(" not found!");
+            }
+            catch (IOException)
+            {
+                result.Append("Error writing to file: ");
+            }
+            return result.ToString();
+        }
         public override string ToString()
         {
             string res = "";

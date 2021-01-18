@@ -36,7 +36,21 @@ namespace Assignment7
             Console.WriteLine("\nRead and Write with JSON format\n");
             hotel.WriteJson(@"d:\temp\ass7json.json");
             var hotelAfterReadFromJSONFile = hotel.ReadJson(@"d:\temp\ass7json.json");
-            Console.WriteLine(hotelAfterReadFromXMLFile);
+            Console.WriteLine(hotelAfterReadFromJSONFile);
+
+            // ReadBinary and WriteBinary
+            Console.WriteLine("\nRead and Write with Binary format\n");
+            hotel.WriteToFile(@"d:\temp\ass7binary.txt");
+            var hotelAfterRead = new Hotel();
+            hotelAfterRead.ReadFromFile(@"d:\temp\ass7binary.txt");
+            Console.WriteLine(hotelAfterRead.ToString());
+
+            // ReadText and WriteText
+            Console.WriteLine("\nRead and Write with Text format\n");
+            hotel.WriteTextToFile(@"d:\temp\ass7text.txt");
+            var hotelAfterReadFromText = new Hotel();
+            hotelAfterReadFromText.ReadTextFromFile(@"d:\temp\ass7binary.txt");
+            Console.WriteLine(hotelAfterReadFromText);
 
             Console.ReadLine();
         }

@@ -11,6 +11,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
+using System.Text;
 
 namespace Assignment7
 {
@@ -108,36 +109,16 @@ namespace Assignment7
             this.roomList = new List<Room>();
             this.customerList = new List<Customer>();
         }
-
-        public override string ToString()
-        {
-            string res = "";
-            res += "Hotel Name: " + this.name + "\n";
-            res += "Construction date: " + this.constructionDate + "\n";
-            res += "Address: " + this.address + "\n";
-            res += "Stars: " + this.stars + "\n";
-            res += "\nList of rooms \n";
-            foreach (var room in roomList)
-            {
-                res += room.ToString();
-            }
-            res += "\nList of customers \n";
-            foreach (var customer in customerList)
-            {
-                res += customer.ToString();
-            }
-            return res;
-        }
-
+        // Write Serializ
         public void WriteBinarySerialize(string filePath)
         {
-            FileStream fileStream = new FileStream(filePath, FileMode.Append);
+            FileStream fileStream = new FileStream(filePath, FileMode.Create);
             BinaryFormatter binaryFormatter = new BinaryFormatter();
             binaryFormatter.Serialize(fileStream, this);
             fileStream.Flush();
             fileStream.Close();
         }
-
+        // Read Serialize
         public static Hotel ReadBinarySerialize(string filePath)
         {
             FileStream fileStream = new FileStream(filePath, FileMode.Open);
@@ -160,8 +141,7 @@ namespace Assignment7
             }
             return null;
         }
-
-        
+        // Write XML
         public void WriteXML(string filePathName)
         {
             XmlSerializer serializer = new XmlSerializer(this.GetType());
@@ -177,6 +157,7 @@ namespace Assignment7
         }
         //This generic method reeads and returns the content of the XML file
         //in a generic form
+        // Read XML
         public Hotel ReadXML(string FileName)
         {
             using (var stream = System.IO.File.OpenRead(FileName))
@@ -186,7 +167,7 @@ namespace Assignment7
                 return data;
             }
         }
-
+        // Write JSON
         public void WriteJson(string filePath)
         {
             var serializingSettings = new DataContractJsonSerializerSettings();
@@ -198,13 +179,185 @@ namespace Assignment7
             jsonSerializer.WriteObject(fileWriter, this);
             fileWriter.Close();
         }
-
-        public string ReadJson(string filePath)
+        // Read JSON
+        public Hotel ReadJson(string filePath)
         {
             StreamReader reader = new StreamReader(filePath);
             string jsonData = reader.ReadToEnd();
+            Hotel items = JsonConvert.DeserializeObject<Hotel>(jsonData);
             reader.Close();
-            return jsonData;
+            return items;
+        }
+        // Write by using WriteBinary
+        public void WriteToFile(string filePath)
+        {
+            try
+            {
+                BinaryWriter binaryWriter = new BinaryWriter(new FileStream(filePath, FileMode.Create));
+                binaryWriter.Write(name);
+                binaryWriter.Write(constructionDate);
+                binaryWriter.Write(address);
+                binaryWriter.Write(stars);
+                binaryWriter.Write(roomList.Count);
+                binaryWriter.Write(customerList.Count);
+                foreach (var room in roomList)
+                {
+                    room.WriteToFile(binaryWriter);
+                }
+                foreach (var customer in customerList)
+                {
+                    customer.WriteToFile(binaryWriter);
+                }
+                binaryWriter.Close();
+            }
+            catch (FileNotFoundException)
+            {
+                Console.WriteLine(filePath + " not found!");
+            }
+            catch (IOException)
+            {
+                Console.WriteLine("Error writing to file: " + filePath);
+            }
+
+        }
+        // Read by using ReadBinary
+        public void ReadFromFile(string filePath)
+        {
+            //Here we declare the binary writer and reader objects
+            BinaryReader binaryReader = null;
+            //Here we open the file for reading.
+            try
+            {
+                binaryReader = new BinaryReader(new FileStream(filePath, FileMode.Open));
+
+                //Here we read an inventory entry.
+                for (; ; )
+                {
+                    int roomCount, customerCount;
+                    name = binaryReader.ReadString();
+                    address = binaryReader.ReadString();
+                    constructionDate = binaryReader.ReadString();
+                    stars = binaryReader.ReadInt32();
+                    roomCount = binaryReader.ReadInt32();
+                    customerCount = binaryReader.ReadInt32();
+                    for (var i = 0; i < roomCount; i++)
+                    {
+                        var room = new Room();
+                        room.ReadFromFile(binaryReader);
+                        roomList.Add(room);
+                    }
+                    for (var i = 0; i < customerCount; i++)
+                    {
+                        var customer = new Customer();
+                        customer.ReadFromFile(binaryReader);
+                        customerList.Add(customer);
+                    }
+                }
+            }
+            catch (FileNotFoundException)
+            {
+                Console.WriteLine(filePath + " not found!");
+
+            }
+            catch (IOException)
+            {
+                Console.WriteLine("Error reading");
+            }
+            finally
+            {
+                binaryReader.Close();
+            }
+        }
+
+        public string WriteTextToFile(string filePath)
+        {
+            string res = "";
+            try
+            {
+                TextWriter textWriter = new StreamWriter(filePath, append: true);
+                res += this.ToStringg();
+                foreach (var room in roomList)
+                {
+                    res += room.ToString();
+                }
+                foreach (var customer in customerList)
+                {
+                    res += customer.ToString();
+                }
+                textWriter.WriteLine(res);
+                textWriter.Close();
+            }
+            catch (FileNotFoundException)
+            {
+                res = filePath + " not found!";
+            }
+            catch (IOException)
+            {
+                res = "Error writing to file: " + filePath;
+            }
+            return res;
+        }
+
+        public string ReadTextFromFile(string filePath)
+        {
+            //Here we declare the binary writer and reader objects
+            TextReader textReader = null;
+            string res = "";
+            string output = null;
+            //Here we open the file for reading.
+            try
+            {
+                textReader = new StreamReader(filePath);
+                // Read an inventory entry.
+                while ((output = textReader.ReadLine()) != null)
+                {
+                    res = output;
+                }
+            }
+            catch (FileNotFoundException)
+            {
+                res = filePath + " not found!";
+
+            }
+
+            catch (IOException)
+            {
+                res = "Error reading " + filePath;
+            }
+            finally
+            {
+                textReader.Close();
+            }
+            return res;
+        }
+
+        public override string ToString()
+        {
+            string res = "";
+            res += "Hotel Name: " + this.name + "\n";
+            res += "Construction date: " + this.constructionDate + "\n";
+            res += "Address: " + this.address + "\n";
+            res += "Stars: " + this.stars + "\n";
+            res += "\nList of rooms \n";
+            foreach (var room in roomList)
+            {
+                res += room.ToString();
+            }
+            res += "\nList of customers \n";
+            foreach (var customer in customerList)
+            {
+                res += customer.ToString();
+            }
+            return res;
+        }
+        public string ToStringg()
+        {
+            string res = "";
+            res += "Hotel Name: " + this.name + "\n";
+            res += "Construction date: " + this.constructionDate + "\n";
+            res += "Address: " + this.address + "\n";
+            res += "Stars: " + this.stars + "\n";
+            return res;
         }
     }
 }

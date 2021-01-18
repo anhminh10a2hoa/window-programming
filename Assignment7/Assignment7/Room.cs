@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
+using System.Text;
 
 namespace Assignment7
 {
@@ -89,6 +90,56 @@ namespace Assignment7
 
         public Room() { }
 
+        public void WriteToFile(BinaryWriter binaryWriter)
+        {
+            try
+            {
+                binaryWriter.Write(roomNumber);
+                binaryWriter.Write(area);
+                binaryWriter.Write(type);
+                binaryWriter.Write(price);
+                binaryWriter.Write(description);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error writting");
+            }
+        }
+
+        public void ReadFromFile(BinaryReader binaryReader)
+        {
+            try
+            {
+                roomNumber = binaryReader.ReadString();
+                area = binaryReader.ReadInt32();
+                type = binaryReader.ReadString();
+                price = binaryReader.ReadDouble();
+                description = binaryReader.ReadString();
+            }
+            catch (IOException)
+            {
+                Console.WriteLine("Error reading");
+            }
+        }
+
+        public string WriteTextToFile(TextWriter textWriter)
+        {
+            StringBuilder result = new StringBuilder();
+            try
+            {
+                textWriter.WriteLine(this.ToString());
+                textWriter.Close();
+            }
+            catch (FileNotFoundException)
+            {
+                result.Append(" not found!");
+            }
+            catch (IOException)
+            {
+                result.Append("Error writing to file: ");
+            }
+            return result.ToString();
+        }
         public override string ToString()
         {
             string res = "";

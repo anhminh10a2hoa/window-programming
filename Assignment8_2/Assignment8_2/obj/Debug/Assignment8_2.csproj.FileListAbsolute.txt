@@ -1,0 +1,9 @@
+D:\Window_programming_course\Assignment8_2\Assignment8_2\bin\Debug\Assignment8_2.exe.config
+D:\Window_programming_course\Assignment8_2\Assignment8_2\bin\Debug\Assignment8_2.exe
+D:\Window_programming_course\Assignment8_2\Assignment8_2\bin\Debug\Assignment8_2.pdb
+D:\Window_programming_course\Assignment8_2\Assignment8_2\obj\Debug\Assignment8_2.csprojAssemblyReference.cache
+D:\Window_programming_course\Assignment8_2\Assignment8_2\obj\Debug\Assignment8_2.Properties.Resources.resources
+D:\Window_programming_course\Assignment8_2\Assignment8_2\obj\Debug\Assignment8_2.csproj.GenerateResource.cache
+D:\Window_programming_course\Assignment8_2\Assignment8_2\obj\Debug\Assignment8_2.csproj.CoreCompileInputs.cache
+D:\Window_programming_course\Assignment8_2\Assignment8_2\obj\Debug\Assignment8_2.exe
+D:\Window_programming_course\Assignment8_2\Assignment8_2\obj\Debug\Assignment8_2.pdb
