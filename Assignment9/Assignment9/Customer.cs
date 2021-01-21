@@ -65,7 +65,8 @@ namespace Assignment9
         {
             string res = "";
             res += "Id: " + this.id
-                    + "\nName: " + this.firstName + this.lastName
+                    + "\nFirst name: " + this.firstName 
+                    + "\nLast name: " + this.lastName
                     + "\nPhone: " + this.phoneNumber + "\n";
             return res;
         }

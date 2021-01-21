@@ -26,6 +26,7 @@ namespace Assignment8_2
             TextBox destination;
             TextBox dataTime;
             List<Flight> fligtCollection = new List<Flight>();
+            Label error;
             //This is the default constructor
             public MyForm()
             {
@@ -49,6 +50,7 @@ namespace Assignment8_2
                 origin = new TextBox();
                 destination = new TextBox();
                 dataTime = new TextBox();
+                error = new Label();
                 //Here we specify that the size of the label is automathic and should
                 //change according to its content.
                 this.infoLabel.AutoSize = true;
@@ -98,6 +100,10 @@ namespace Assignment8_2
                 this.summaryButton.BackColor = Color.FromArgb(230, 181, 102);
                 this.summaryButton.Text = "Summary";
                 this.summaryButton.Click += new EventHandler(this.showData);
+                // Error
+                this.error.ForeColor = Color.Red;
+                this.error.AutoSize = true;
+                this.error.Location = new Point(230, 10);
                 //Here we add the label to the form.
                 this.Controls.Add(infoLabel);
                 this.Controls.Add(flightIdLabel);
@@ -110,15 +116,24 @@ namespace Assignment8_2
                 this.Controls.Add(dataTime);
                 this.Controls.Add(addDataButton);
                 this.Controls.Add(summaryButton);
+                this.Controls.Add(error);
             }
             //This method sets the text content of the lable
             public void addData(object sender, EventArgs e)
             {
-                fligtCollection.Add(new Flight(this.flightId.Text, this.origin.Text, this.destination.Text, this.dataTime.Text));
-                this.flightId.Text = "";
-                this.origin.Text = "";
-                this.destination.Text = "";
-                this.dataTime.Text = "";
+                if ((this.flightId.Text == "") || (this.origin.Text == "") || (this.destination.Text == "") || (this.dataTime.Text == ""))
+                {
+                    this.error.Text = "Please fill all fields";
+                }
+                else
+                {
+                    fligtCollection.Add(new Flight(this.flightId.Text, this.origin.Text, this.destination.Text, this.dataTime.Text));
+                    this.flightId.Text = "";
+                    this.origin.Text = "";
+                    this.destination.Text = "";
+                    this.dataTime.Text = "";
+                    this.error.Text = "";
+                }
             }
             public void showData(object sender, EventArgs e)
             {

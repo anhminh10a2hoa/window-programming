@@ -88,27 +88,6 @@ namespace Assignment9
             this.customerList = new List<Customer>();
         }
 
-        public void WriteJson(string filePath)
-        {
-            var serializingSettings = new DataContractJsonSerializerSettings();
-            serializingSettings.UseSimpleDictionaryFormat = true;
-            serializingSettings.DateTimeFormat = new DateTimeFormat("d.M.yyyy");
-            serializingSettings.MaxItemsInObjectGraph = 1000;
-            DataContractJsonSerializer jsonSerializer = new DataContractJsonSerializer(typeof(Flight), serializingSettings);
-            FileStream fileWriter = new FileStream(filePath, FileMode.Create);
-            jsonSerializer.WriteObject(fileWriter, this);
-            fileWriter.Close();
-        }
-        // Read JSON
-        public Flight ReadJson(string filePath)
-        {
-            StreamReader reader = new StreamReader(filePath);
-            string jsonData = reader.ReadToEnd();
-            Flight items = JsonConvert.DeserializeObject<Flight>(jsonData);
-            reader.Close();
-            return items;
-        }
-
         public override string ToString()
         {
             string res = "";
@@ -124,13 +103,14 @@ namespace Assignment9
             return res;
         }
 
-        public string FindFlight(string searchId)
+        public string InformationOfFlight()
         {
-            if (id.Equals(searchId))
-            {
-                return this.ToString();
-            }
-            return "";
+            string res = "";
+            res += "Id: " + this.id
+                + "\nOrigin: " + this.origin
+                + "\nDestination: " + this.destination
+                + "\nDate: " + this.date;
+            return res;
         }
     }
 }
