@@ -23,15 +23,15 @@ namespace Assignment8
                 //Here we specify that the event handler for cases in which the form is clicked
                 //is Form_Click() method
                 //this.Click += new System.EventHandler(this.Form_Click);
-                this.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDoubleClick);
+                this.MouseDoubleClick += new MouseEventHandler(this.Form1_MouseDoubleClick);
                 //Here we initialize infoLabel component by defining its size, location and text.
                 infoLabel = new Label();
                 count = 0;
                 //Here we specify that the size of the label is automathic and should
                 //change according to its content.
                 this.infoLabel.AutoSize = true;
-                this.infoLabel.Location = new System.Drawing.Point(20, 20);
-                this.infoLabel.Size = new System.Drawing.Size(35, 13);
+                this.infoLabel.Location = new Point(20, 20);
+                this.infoLabel.Size = new Size(35, 13);
                 this.infoLabel.Text = "";
                 //Here we add the label to the form.
                 this.Controls.Add(infoLabel);

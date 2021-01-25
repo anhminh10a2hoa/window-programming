@@ -1,0 +1,11 @@
+D:\Window_programming_course\Assignment82\Assignment82\obj\Debug\Assignment82.csprojAssemblyReference.cache
+D:\Window_programming_course\Assignment82\Assignment82\obj\Debug\Assignment82.Form1.resources
+D:\Window_programming_course\Assignment82\Assignment82\obj\Debug\Assignment82.Properties.Resources.resources
+D:\Window_programming_course\Assignment82\Assignment82\obj\Debug\Assignment82.Summary.resources
+D:\Window_programming_course\Assignment82\Assignment82\obj\Debug\Assignment82.csproj.GenerateResource.cache
+D:\Window_programming_course\Assignment82\Assignment82\obj\Debug\Assignment82.csproj.CoreCompileInputs.cache
+D:\Window_programming_course\Assignment82\Assignment82\bin\Debug\Assignment82.exe.config
+D:\Window_programming_course\Assignment82\Assignment82\bin\Debug\Assignment82.exe
+D:\Window_programming_course\Assignment82\Assignment82\bin\Debug\Assignment82.pdb
+D:\Window_programming_course\Assignment82\Assignment82\obj\Debug\Assignment82.exe
+D:\Window_programming_course\Assignment82\Assignment82\obj\Debug\Assignment82.pdb

@@ -1,0 +1,17 @@
+D:\Window_programming_course\Assignmentt9\Assignmentt9\bin\Debug\Assignmentt9.exe.config
+D:\Window_programming_course\Assignmentt9\Assignmentt9\bin\Debug\Assignmentt9.exe
+D:\Window_programming_course\Assignmentt9\Assignmentt9\bin\Debug\Assignmentt9.pdb
+D:\Window_programming_course\Assignmentt9\Assignmentt9\bin\Debug\Newtonsoft.Json.Bson.dll
+D:\Window_programming_course\Assignmentt9\Assignmentt9\bin\Debug\Newtonsoft.Json.dll
+D:\Window_programming_course\Assignmentt9\Assignmentt9\bin\Debug\Newtonsoft.Json.xml
+D:\Window_programming_course\Assignmentt9\Assignmentt9\bin\Debug\Newtonsoft.Json.Bson.pdb
+D:\Window_programming_course\Assignmentt9\Assignmentt9\bin\Debug\Newtonsoft.Json.Bson.xml
+D:\Window_programming_course\Assignmentt9\Assignmentt9\obj\Debug\Assignmentt9.csprojAssemblyReference.cache
+D:\Window_programming_course\Assignmentt9\Assignmentt9\obj\Debug\Assignmentt9.Mainpage.resources
+D:\Window_programming_course\Assignmentt9\Assignmentt9\obj\Debug\Assignmentt9.Properties.Resources.resources
+D:\Window_programming_course\Assignmentt9\Assignmentt9\obj\Debug\Assignmentt9.Summary.resources
+D:\Window_programming_course\Assignmentt9\Assignmentt9\obj\Debug\Assignmentt9.csproj.GenerateResource.cache
+D:\Window_programming_course\Assignmentt9\Assignmentt9\obj\Debug\Assignmentt9.csproj.CoreCompileInputs.cache
+D:\Window_programming_course\Assignmentt9\Assignmentt9\obj\Debug\Assignmentt9.csproj.CopyComplete
+D:\Window_programming_course\Assignmentt9\Assignmentt9\obj\Debug\Assignmentt9.exe
+D:\Window_programming_course\Assignmentt9\Assignmentt9\obj\Debug\Assignmentt9.pdb
