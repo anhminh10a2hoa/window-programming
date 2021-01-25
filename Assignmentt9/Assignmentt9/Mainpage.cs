@@ -15,142 +15,88 @@ namespace Assignmentt9
         ReadWriteHandler ReadWriteHandler = new ReadWriteHandler();
         List<Flight> fligtCollection = ReadWriteHandler.ReadJson(@"d:\temp\as8.json");
         Summary summary = null;
+        AddFlight addFlightForm = null;
+        AddCustomer addCustomerForm = null;
+        DeleteFlight deleteFlightForm = null;
+        DeleteCustomer deleteCustomerForm = null;
+        UpdateFlight updateFlightForm = null;
+        UpdateCustomer updateCustomerForm = null;
+        SearchFlight searchFlightForm = null;
+        SearchCustomer searchCustomerForm = null;
+
         public Mainpage()
         {
             InitializeComponent();
         }
-
-        public Boolean checkFieldEmptyOrNot(string dataCheck)
-        {
-            if (dataCheck == "Flight")
-            {
-                if ((this.flightId.Text == "") || (this.origin.Text == "") || (this.destination.Text == "") || (this.dataTime.Text == ""))
-                {
-                    this.error.Text = "Please fill all fields (flight id, origin, destination, time)";
-                    return false;
-                }
-                else
-                {
-                    this.error.Text = "";
-                    return true;
-                }
-            }
-            if (dataCheck == "Customer")
-            {
-                if ((this.customerId.Text == "") || (this.firstName.Text == "") || (this.lastName.Text == "") || (this.phoneNumber.Text == "") || (this.flightId.Text == ""))
-                {
-                    this.error.Text = "Please fill all fields (customer id, name, phone number, flight id)";
-                    return false;
-                }
-                else
-                {
-                    this.error.Text = "";
-                    return true;
-                }
-            }
-            return false;
-        }
-        public void emptyAllFields()
-        {
-            this.flightId.Text = "";
-            this.origin.Text = "";
-            this.destination.Text = "";
-            this.dataTime.Text = "";
-            this.customerId.Text = "";
-            this.firstName.Text = "";
-            this.lastName.Text = "";
-            this.phoneNumber.Text = "";
-        }
-        public void writeData()
-        {
-            ReadWriteHandler.WriteJson(@"d:\temp\as8.json", fligtCollection);
-        }
         //This method sets the text content of the lable
         public void addFlight(object sender, EventArgs e)
         {
-            if (checkFieldEmptyOrNot("Flight"))
+            if (addFlightForm == null || addFlightForm.IsDisposed)
             {
-                fligtCollection.Add(new Flight(this.flightId.Text, this.origin.Text, this.destination.Text, this.dataTime.Text));
-                emptyAllFields();
-                writeData();
+                addFlightForm = new AddFlight();
+                addFlightForm.Show();
             }
         }
 
         public void addCustomer(object sender, EventArgs e)
         {
-            if (checkFieldEmptyOrNot("Customer"))
+            if (addCustomerForm == null || addCustomerForm.IsDisposed)
             {
-                var flight = fligtCollection.FirstOrDefault(f => f.Id == this.flightId.Text);
-                flight.CustomerList.Add(new Customer(this.customerId.Text, this.firstName.Text, this.lastName.Text, this.phoneNumber.Text));
-                emptyAllFields();
-                writeData();
+                addCustomerForm = new AddCustomer();
+                addCustomerForm.Show();
             }
         }
-        public void deleteData(object sender, EventArgs e)
+        public void deleteFlight(object sender, EventArgs e)
         {
-            if (this.flightId.Text != "" && this.customerId.Text == "")
+            if (deleteFlightForm == null || deleteFlightForm.IsDisposed)
             {
-                fligtCollection.RemoveAll(f => f.Id == this.flightId.Text);
-                emptyAllFields();
-                writeData();
-            }
-            if (this.flightId.Text != "" && this.customerId.Text != "")
-            {
-                var flight = fligtCollection.FirstOrDefault(f => f.Id == this.flightId.Text);
-                flight.CustomerList.RemoveAll(c => c.Id == this.customerId.Text);
-                emptyAllFields();
-                writeData();
+                deleteFlightForm = new DeleteFlight();
+                deleteFlightForm.Show();
             }
         }
 
-        public void updateData(object sender, EventArgs e)
+        public void deleteCustomer(object sender, EventArgs e)
         {
-            if (this.flightId.Text != "" && this.customerId.Text == "" && checkFieldEmptyOrNot("Flight"))
+            if (deleteCustomerForm == null || deleteCustomerForm.IsDisposed)
             {
-                var flight = fligtCollection.FirstOrDefault(f => f.Id == this.flightId.Text);
-                flight.Origin = this.origin.Text;
-                flight.Destination = this.destination.Text;
-                flight.Date = this.dataTime.Text;
-                emptyAllFields();
-                writeData();
-            }
-            if (this.flightId.Text != "" && this.customerId.Text != "" && checkFieldEmptyOrNot("Customer"))
-            {
-                var flight = fligtCollection.FirstOrDefault(f => f.Id == this.flightId.Text);
-                var customer = flight.CustomerList.FirstOrDefault(c => c.Id == this.customerId.Text);
-                customer.Id = this.customerId.Text;
-                customer.FirstName = this.firstName.Text;
-                customer.FirstName = this.lastName.Text;
-                customer.PhoneNumber = this.phoneNumber.Text;
-                emptyAllFields();
-                writeData();
+                deleteCustomerForm = new DeleteCustomer();
+                deleteCustomerForm.Show();
             }
         }
 
-        public void searchData(object sender, EventArgs e)
+        public void updateFlight(object sender, EventArgs e)
         {
-            if (this.flightId.Text != "" && this.customerId.Text == "")
+            if (updateFlightForm == null || updateFlightForm.IsDisposed)
             {
-                var flight = fligtCollection.FirstOrDefault(f => f.Id == this.flightId.Text);
-                emptyAllFields();
-                if (summary == null || summary.IsDisposed)
-                {
-                    summary = new Summary();
-                    summary.showData(flight.ToString());
-                    summary.Show();
-                }
+                updateFlightForm = new UpdateFlight();
+                updateFlightForm.Show();
             }
-            if (this.flightId.Text != "" && this.customerId.Text != "")
+        }
+
+        public void updateCustomer(object sender, EventArgs e)
+        {
+            if (updateCustomerForm == null || updateCustomerForm.IsDisposed)
             {
-                var flight = fligtCollection.FirstOrDefault(f => f.Id == this.flightId.Text);
-                var customer = flight.CustomerList.FirstOrDefault(c => c.Id == this.customerId.Text);
-                emptyAllFields();
-                if (summary == null || summary.IsDisposed)
-                {
-                    summary = new Summary();
-                    summary.showData(flight.InformationOfFlight() + "\n" + customer.ToString());
-                    summary.Show();
-                }
+                updateCustomerForm = new UpdateCustomer();
+                updateCustomerForm.Show();
+            }
+        }
+
+        public void searchFlight(object sender, EventArgs e)
+        {
+            if (searchFlightForm == null || searchFlightForm.IsDisposed)
+            {
+                searchFlightForm = new SearchFlight();
+                searchFlightForm.Show();
+            }
+        }
+
+        public void searchCustomer(object sender, EventArgs e)
+        {
+            if (searchCustomerForm == null || searchCustomerForm.IsDisposed)
+            {
+                searchCustomerForm = new SearchCustomer();
+                searchCustomerForm.Show();
             }
         }
 

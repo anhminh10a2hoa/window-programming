@@ -15,3 +15,11 @@ D:\Window_programming_course\Assignmentt9\Assignmentt9\obj\Debug\Assignmentt9.cs
 D:\Window_programming_course\Assignmentt9\Assignmentt9\obj\Debug\Assignmentt9.csproj.CopyComplete
 D:\Window_programming_course\Assignmentt9\Assignmentt9\obj\Debug\Assignmentt9.exe
 D:\Window_programming_course\Assignmentt9\Assignmentt9\obj\Debug\Assignmentt9.pdb
+D:\Window_programming_course\Assignmentt9\Assignmentt9\obj\Debug\Assignmentt9.AddCustomer.resources
+D:\Window_programming_course\Assignmentt9\Assignmentt9\obj\Debug\Assignmentt9.AddFlight.resources
+D:\Window_programming_course\Assignmentt9\Assignmentt9\obj\Debug\Assignmentt9.DeleteCustomer.resources
+D:\Window_programming_course\Assignmentt9\Assignmentt9\obj\Debug\Assignmentt9.DeleteFlight.resources
+D:\Window_programming_course\Assignmentt9\Assignmentt9\obj\Debug\Assignmentt9.SearchCustomer.resources
+D:\Window_programming_course\Assignmentt9\Assignmentt9\obj\Debug\Assignmentt9.SearchFlight.resources
+D:\Window_programming_course\Assignmentt9\Assignmentt9\obj\Debug\Assignmentt9.UpdateCustomer.resources
+D:\Window_programming_course\Assignmentt9\Assignmentt9\obj\Debug\Assignmentt9.UpdateFlight.resources

@@ -53,7 +53,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddCustomer.Designer.cs">
+      <DependentUpon>AddCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddFlight.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddFlight.Designer.cs">
+      <DependentUpon>AddFlight.cs</DependentUpon>
+    </Compile>
     <Compile Include="Customer.cs" />
+    <Compile Include="DeleteCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeleteCustomer.Designer.cs">
+      <DependentUpon>DeleteCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DeleteFlight.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeleteFlight.Designer.cs">
+      <DependentUpon>DeleteFlight.cs</DependentUpon>
+    </Compile>
     <Compile Include="Flight.cs" />
     <Compile Include="Mainpage.cs">
       <SubType>Form</SubType>
@@ -64,12 +88,48 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReadWriteHandler.cs" />
+    <Compile Include="SearchCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SearchCustomer.Designer.cs">
+      <DependentUpon>SearchCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SearchFlight.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SearchFlight.Designer.cs">
+      <DependentUpon>SearchFlight.cs</DependentUpon>
+    </Compile>
     <Compile Include="Summary.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Summary.Designer.cs">
       <DependentUpon>Summary.cs</DependentUpon>
     </Compile>
+    <Compile Include="UpdateCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateCustomer.Designer.cs">
+      <DependentUpon>UpdateCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateFlight.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateFlight.Designer.cs">
+      <DependentUpon>UpdateFlight.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AddCustomer.resx">
+      <DependentUpon>AddCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddFlight.resx">
+      <DependentUpon>AddFlight.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeleteCustomer.resx">
+      <DependentUpon>DeleteCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeleteFlight.resx">
+      <DependentUpon>DeleteFlight.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Mainpage.resx">
       <DependentUpon>Mainpage.cs</DependentUpon>
     </EmbeddedResource>
@@ -82,8 +142,20 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SearchCustomer.resx">
+      <DependentUpon>SearchCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchFlight.resx">
+      <DependentUpon>SearchFlight.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Summary.resx">
       <DependentUpon>Summary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateCustomer.resx">
+      <DependentUpon>UpdateCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateFlight.resx">
+      <DependentUpon>UpdateFlight.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
