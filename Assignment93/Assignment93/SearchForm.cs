@@ -18,60 +18,117 @@ namespace Assignment93
         }
         SearchFlight searchFlightForm = null;
         SearchCustomer searchCustomerForm = null;
-        Flight Flight = new Flight();
-        List<Flight> fligtCollection = Flight.ReadJson(@"d:\temp\ass9_flight.json");
-        Customer Customer = new Customer();
-        List<Customer> customerCollection = Customer.ReadJson(@"d:\temp\ass9_customer.json");
+
+        private void openFlightFile(object sender, EventArgs e)
+        {
+            using (OpenFileDialog sfd = new OpenFileDialog())
+            {
+                sfd.InitialDirectory = "D:\temp";
+                sfd.Filter = "All Files|*.json*";
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    label1.Text = sfd.FileName;
+                }
+            }
+        }
+
+        private void openCustomerFile(object sender, EventArgs e)
+        {
+            using (OpenFileDialog sfd = new OpenFileDialog())
+            {
+                sfd.InitialDirectory = "D:\temp";
+                sfd.Filter = "All Files|*.json*";
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    label2.Text = sfd.FileName;
+                }
+            }
+        }
+
 
         private void searchCustomer(object sender, EventArgs e)
         {
-            String res = "";
-            foreach (var c in this.customerCollection)
+            if(String.IsNullOrEmpty(label1.Text) || String.IsNullOrEmpty(label2.Text))
             {
-                if (c.Id == textBox2.Text)
+                error.Text = "Please provide files you want to search data";
+            }
+            else
+            {
+                error.Text = "";
+                List<Customer> customerCollection = Customer.ReadJson(label2.Text);
+                List<Flight> flightCollection = Flight.ReadJson(label1.Text);
+                if(String.IsNullOrEmpty(textBox2.Text))
                 {
-                    res += c.ToString() + "\n\n";
-                    foreach (var f in this.fligtCollection)
+                    error.Text = "Please file customerId";
+                } else {
+                    error.Text = "";
+                    String res = "";
+                    foreach (var c in customerCollection)
                     {
-                        if (f.Id == c.FlightId)
+                        if (c.Id == textBox2.Text)
                         {
-                            res += f.ToString() + "\n\n";
+                            res += c.ToString() + "\n\n";
+                            foreach (var f in flightCollection)
+                            {
+                                if (f.Id == c.FlightId)
+                                {
+                                    res += f.ToString() + "\n\n";
+                                }
+                            }
                         }
                     }
+
+                    if (searchCustomerForm == null || searchCustomerForm.IsDisposed)
+                    {
+                        searchCustomerForm = new SearchCustomer();
+                        searchCustomerForm.showAllData(res);
+                        searchCustomerForm.Show();
+                    }
                 }
-            }
-            
-            if (searchCustomerForm == null || searchCustomerForm.IsDisposed)
-            {
-                searchCustomerForm = new SearchCustomer();
-                searchCustomerForm.showAllData(res);
-                searchCustomerForm.Show();
+                
             }
         }
 
         private void searchFlight(object sender, EventArgs e)
         {
-            String res = "";
-            foreach (var f in this.fligtCollection)
+            if (String.IsNullOrEmpty(label1.Text) || String.IsNullOrEmpty(label2.Text))
             {
-                if (f.Id == textBox1.Text)
+                error.Text = "Please provide files you want to search data";
+            }
+            else
+            {
+                error.Text = "";
+                List<Customer> customerCollection = Customer.ReadJson(label2.Text);
+                List<Flight> flightCollection = Flight.ReadJson(label1.Text);
+                if (String.IsNullOrEmpty(textBox1.Text))
                 {
-                    res += f.ToString() + "\n\n";
-                    res += "List of customers\n\n";
-                    foreach (var c in this.customerCollection)
+                    error.Text = "Please file flighId";
+                } else
+                {
+                    error.Text = "";
+                    String res = "";
+                    foreach (var f in flightCollection)
                     {
-                        if (c.FlightId == f.Id)
+                        if (f.Id == textBox1.Text)
                         {
-                            res += c.ToString() + "\n\n";
+                            res += f.ToString() + "\n\n";
+                            res += "List of customers\n\n";
+                            foreach (var c in customerCollection)
+                            {
+                                if (c.FlightId == f.Id)
+                                {
+                                    res += c.ToString() + "\n\n";
+                                }
+                            }
                         }
                     }
+                    if (searchFlightForm == null || searchFlightForm.IsDisposed)
+                    {
+                        searchFlightForm = new SearchFlight();
+                        searchFlightForm.showAllData(res);
+                        searchFlightForm.Show();
+                    }
                 }
-            }
-            if (searchFlightForm == null || searchFlightForm.IsDisposed)
-            {
-                searchFlightForm = new SearchFlight();
-                searchFlightForm.showAllData(res);
-                searchFlightForm.Show();
             }
         }
     }

@@ -53,6 +53,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddCustomer.Designer.cs">
+      <DependentUpon>AddCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddFlight.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddFlight.Designer.cs">
+      <DependentUpon>AddFlight.cs</DependentUpon>
+    </Compile>
     <Compile Include="Customer.cs" />
     <Compile Include="Flight.cs" />
     <Compile Include="Form1.cs">
@@ -81,6 +93,12 @@
     <Compile Include="SearchForm.Designer.cs">
       <DependentUpon>SearchForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AddCustomer.resx">
+      <DependentUpon>AddCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddFlight.resx">
+      <DependentUpon>AddFlight.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

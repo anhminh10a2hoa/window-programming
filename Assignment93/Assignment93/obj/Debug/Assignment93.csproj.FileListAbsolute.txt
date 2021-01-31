@@ -17,3 +17,5 @@ D:\Window_programming_course\Assignment93\Assignment93\obj\Debug\Assignment93.Se
 D:\Window_programming_course\Assignment93\Assignment93\obj\Debug\Assignment93.csproj.CopyComplete
 D:\Window_programming_course\Assignment93\Assignment93\obj\Debug\Assignment93.SearchCustomer.resources
 D:\Window_programming_course\Assignment93\Assignment93\obj\Debug\Assignment93.SearchForm.resources
+D:\Window_programming_course\Assignment93\Assignment93\obj\Debug\Assignment93.AddCustomer.resources
+D:\Window_programming_course\Assignment93\Assignment93\obj\Debug\Assignment93.AddFlight.resources

@@ -34,10 +34,13 @@
             this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.writeDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.flightActionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.searchCustomersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.addFlightToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addCustomerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.searchFlightToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.searchCustomerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -57,32 +60,28 @@
             // 
             this.menuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.writeDataToolStripMenuItem,
-            this.flightActionsToolStripMenuItem,
-            this.searchCustomersToolStripMenuItem});
+            this.flightActionsToolStripMenuItem});
             this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
             this.menuToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.menuToolStripMenuItem.Text = "Menu";
             // 
             // writeDataToolStripMenuItem
             // 
+            this.writeDataToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addFlightToolStripMenuItem,
+            this.addCustomerToolStripMenuItem});
             this.writeDataToolStripMenuItem.Name = "writeDataToolStripMenuItem";
             this.writeDataToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.writeDataToolStripMenuItem.Text = "Write Data";
-            this.writeDataToolStripMenuItem.Click += new System.EventHandler(this.writeData);
+            this.writeDataToolStripMenuItem.Text = "Add data";
             // 
             // flightActionsToolStripMenuItem
             // 
+            this.flightActionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.searchFlightToolStripMenuItem,
+            this.searchCustomerToolStripMenuItem});
             this.flightActionsToolStripMenuItem.Name = "flightActionsToolStripMenuItem";
             this.flightActionsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.flightActionsToolStripMenuItem.Text = "Search Flights";
-            this.flightActionsToolStripMenuItem.Click += new System.EventHandler(this.searchFlight);
-            // 
-            // searchCustomersToolStripMenuItem
-            // 
-            this.searchCustomersToolStripMenuItem.Name = "searchCustomersToolStripMenuItem";
-            this.searchCustomersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.searchCustomersToolStripMenuItem.Text = "Search Customers";
-            this.searchCustomersToolStripMenuItem.Click += new System.EventHandler(this.searchCustomer);
+            this.flightActionsToolStripMenuItem.Text = "Search data";
             // 
             // exitToolStripMenuItem
             // 
@@ -106,6 +105,34 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
+            // 
+            // addFlightToolStripMenuItem
+            // 
+            this.addFlightToolStripMenuItem.Name = "addFlightToolStripMenuItem";
+            this.addFlightToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addFlightToolStripMenuItem.Text = "Add Flight";
+            this.addFlightToolStripMenuItem.Click += new System.EventHandler(this.addFlight);
+            // 
+            // addCustomerToolStripMenuItem
+            // 
+            this.addCustomerToolStripMenuItem.Name = "addCustomerToolStripMenuItem";
+            this.addCustomerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addCustomerToolStripMenuItem.Text = "Add Customer";
+            this.addCustomerToolStripMenuItem.Click += new System.EventHandler(this.addCustomer);
+            // 
+            // searchFlightToolStripMenuItem
+            // 
+            this.searchFlightToolStripMenuItem.Name = "searchFlightToolStripMenuItem";
+            this.searchFlightToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.searchFlightToolStripMenuItem.Text = "Search Flight";
+            this.searchFlightToolStripMenuItem.Click += new System.EventHandler(this.searchFlight);
+            // 
+            // searchCustomerToolStripMenuItem
+            // 
+            this.searchCustomerToolStripMenuItem.Name = "searchCustomerToolStripMenuItem";
+            this.searchCustomerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.searchCustomerToolStripMenuItem.Text = "Search Customer";
+            this.searchCustomerToolStripMenuItem.Click += new System.EventHandler(this.searchCustomer);
             // 
             // Form1
             // 
@@ -134,7 +161,10 @@
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.ToolStripMenuItem searchCustomersToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addFlightToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addCustomerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem searchFlightToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem searchCustomerToolStripMenuItem;
     }
 }
 
