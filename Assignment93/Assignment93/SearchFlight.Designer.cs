@@ -63,7 +63,7 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.colorToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(104, 26);
             // 
             // colorToolStripMenuItem
             // 
@@ -72,20 +72,20 @@
             this.foreColorToolStripMenuItem,
             this.fontsizeToolStripMenuItem});
             this.colorToolStripMenuItem.Name = "colorToolStripMenuItem";
-            this.colorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.colorToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.colorToolStripMenuItem.Text = "Color";
             // 
             // backgroundToolStripMenuItem
             // 
             this.backgroundToolStripMenuItem.Name = "backgroundToolStripMenuItem";
-            this.backgroundToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.backgroundToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.backgroundToolStripMenuItem.Text = "Background";
             this.backgroundToolStripMenuItem.Click += new System.EventHandler(this.changeBackgroudColor);
             // 
             // foreColorToolStripMenuItem
             // 
             this.foreColorToolStripMenuItem.Name = "foreColorToolStripMenuItem";
-            this.foreColorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.foreColorToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.foreColorToolStripMenuItem.Text = "Foreground";
             this.foreColorToolStripMenuItem.Click += new System.EventHandler(this.changeForegroudColor);
             // 
@@ -94,7 +94,7 @@
             this.fontsizeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripTextBox1});
             this.fontsizeToolStripMenuItem.Name = "fontsizeToolStripMenuItem";
-            this.fontsizeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.fontsizeToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.fontsizeToolStripMenuItem.Text = "Fontsize";
             // 
             // toolStripTextBox1

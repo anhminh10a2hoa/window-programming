@@ -56,5 +56,10 @@ namespace Assignment93
                 addFlightForm.Show();
             }
         }
+
+        private void exitApplication(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

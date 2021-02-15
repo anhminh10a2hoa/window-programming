@@ -19,10 +19,13 @@ namespace Assignment93
 
         private void openData(object sender, EventArgs e)
         {
-            using (OpenFileDialog sfd = new OpenFileDialog())
+            using (SaveFileDialog sfd = new SaveFileDialog())
             {
                 sfd.InitialDirectory = "D:\temp";
                 sfd.Filter = "All Files|*.json*";
+                sfd.OverwritePrompt = true;
+                sfd.DefaultExt = "json";
+                sfd.AddExtension = true;
                 if (sfd.ShowDialog() == DialogResult.OK)
                 {
                     label5.Text = sfd.FileName;

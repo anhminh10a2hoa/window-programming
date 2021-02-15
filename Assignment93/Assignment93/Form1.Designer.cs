@@ -33,14 +33,14 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.writeDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addFlightToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addCustomerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.flightActionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.searchFlightToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.searchCustomerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.addFlightToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addCustomerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.searchFlightToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.searchCustomerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -74,6 +74,20 @@
             this.writeDataToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.writeDataToolStripMenuItem.Text = "Add data";
             // 
+            // addFlightToolStripMenuItem
+            // 
+            this.addFlightToolStripMenuItem.Name = "addFlightToolStripMenuItem";
+            this.addFlightToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.addFlightToolStripMenuItem.Text = "Add Flight";
+            this.addFlightToolStripMenuItem.Click += new System.EventHandler(this.addFlight);
+            // 
+            // addCustomerToolStripMenuItem
+            // 
+            this.addCustomerToolStripMenuItem.Name = "addCustomerToolStripMenuItem";
+            this.addCustomerToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.addCustomerToolStripMenuItem.Text = "Add Customer";
+            this.addCustomerToolStripMenuItem.Click += new System.EventHandler(this.addCustomer);
+            // 
             // flightActionsToolStripMenuItem
             // 
             this.flightActionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -83,11 +97,26 @@
             this.flightActionsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.flightActionsToolStripMenuItem.Text = "Search data";
             // 
+            // searchFlightToolStripMenuItem
+            // 
+            this.searchFlightToolStripMenuItem.Name = "searchFlightToolStripMenuItem";
+            this.searchFlightToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.searchFlightToolStripMenuItem.Text = "Search Flight";
+            this.searchFlightToolStripMenuItem.Click += new System.EventHandler(this.searchFlight);
+            // 
+            // searchCustomerToolStripMenuItem
+            // 
+            this.searchCustomerToolStripMenuItem.Name = "searchCustomerToolStripMenuItem";
+            this.searchCustomerToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.searchCustomerToolStripMenuItem.Text = "Search Customer";
+            this.searchCustomerToolStripMenuItem.Click += new System.EventHandler(this.searchCustomer);
+            // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(38, 20);
             this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitApplication);
             // 
             // contextMenuStrip1
             // 
@@ -105,34 +134,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
-            // 
-            // addFlightToolStripMenuItem
-            // 
-            this.addFlightToolStripMenuItem.Name = "addFlightToolStripMenuItem";
-            this.addFlightToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.addFlightToolStripMenuItem.Text = "Add Flight";
-            this.addFlightToolStripMenuItem.Click += new System.EventHandler(this.addFlight);
-            // 
-            // addCustomerToolStripMenuItem
-            // 
-            this.addCustomerToolStripMenuItem.Name = "addCustomerToolStripMenuItem";
-            this.addCustomerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.addCustomerToolStripMenuItem.Text = "Add Customer";
-            this.addCustomerToolStripMenuItem.Click += new System.EventHandler(this.addCustomer);
-            // 
-            // searchFlightToolStripMenuItem
-            // 
-            this.searchFlightToolStripMenuItem.Name = "searchFlightToolStripMenuItem";
-            this.searchFlightToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.searchFlightToolStripMenuItem.Text = "Search Flight";
-            this.searchFlightToolStripMenuItem.Click += new System.EventHandler(this.searchFlight);
-            // 
-            // searchCustomerToolStripMenuItem
-            // 
-            this.searchCustomerToolStripMenuItem.Name = "searchCustomerToolStripMenuItem";
-            this.searchCustomerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.searchCustomerToolStripMenuItem.Text = "Search Customer";
-            this.searchCustomerToolStripMenuItem.Click += new System.EventHandler(this.searchCustomer);
             // 
             // Form1
             // 
