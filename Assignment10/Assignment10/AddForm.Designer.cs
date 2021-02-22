@@ -193,14 +193,14 @@ namespace Assignment10
             // 
             // dataTimeTextBox
             // 
-            this.dataTimeTextBox.Location = new System.Drawing.Point(542, 243);
+            this.dataTimeTextBox.Location = new System.Drawing.Point(542, 247);
             this.dataTimeTextBox.Name = "dataTimeTextBox";
             this.dataTimeTextBox.Size = new System.Drawing.Size(100, 20);
             this.dataTimeTextBox.TabIndex = 61;
             // 
             // destinationTextBox
             // 
-            this.destinationTextBox.Location = new System.Drawing.Point(542, 209);
+            this.destinationTextBox.Location = new System.Drawing.Point(542, 216);
             this.destinationTextBox.Name = "destinationTextBox";
             this.destinationTextBox.Size = new System.Drawing.Size(100, 20);
             this.destinationTextBox.TabIndex = 60;
@@ -231,7 +231,7 @@ namespace Assignment10
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(450, 216);
+            this.label3.Location = new System.Drawing.Point(450, 219);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(60, 13);
             this.label3.TabIndex = 56;
@@ -240,7 +240,7 @@ namespace Assignment10
             // originLabel
             // 
             this.originLabel.AutoSize = true;
-            this.originLabel.Location = new System.Drawing.Point(450, 190);
+            this.originLabel.Location = new System.Drawing.Point(450, 186);
             this.originLabel.Name = "originLabel";
             this.originLabel.Size = new System.Drawing.Size(34, 13);
             this.originLabel.TabIndex = 55;
@@ -268,7 +268,7 @@ namespace Assignment10
             // airline
             // 
             this.airline.AutoSize = true;
-            this.airline.Location = new System.Drawing.Point(450, 158);
+            this.airline.Location = new System.Drawing.Point(450, 155);
             this.airline.Name = "airline";
             this.airline.Size = new System.Drawing.Size(82, 13);
             this.airline.TabIndex = 63;
@@ -276,7 +276,7 @@ namespace Assignment10
             // 
             // airlineCompanyTextBox
             // 
-            this.airlineCompanyTextBox.Location = new System.Drawing.Point(542, 155);
+            this.airlineCompanyTextBox.Location = new System.Drawing.Point(542, 152);
             this.airlineCompanyTextBox.Name = "airlineCompanyTextBox";
             this.airlineCompanyTextBox.Size = new System.Drawing.Size(100, 20);
             this.airlineCompanyTextBox.TabIndex = 64;

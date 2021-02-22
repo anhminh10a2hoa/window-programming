@@ -37,10 +37,11 @@ namespace Assignment10
             this.addDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.insertDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.getAllDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.getAllCustomerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.getAllCustomerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.updateDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,7 +72,8 @@ namespace Assignment10
             this.addDataToolStripMenuItem,
             this.insertDataToolStripMenuItem,
             this.getAllDataToolStripMenuItem,
-            this.getAllCustomerToolStripMenuItem});
+            this.getAllCustomerToolStripMenuItem,
+            this.updateDataToolStripMenuItem});
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
             this.newToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.newToolStripMenuItem.Text = "New";
@@ -112,6 +114,15 @@ namespace Assignment10
             this.getAllDataToolStripMenuItem.Text = "Get All Flight";
             this.getAllDataToolStripMenuItem.Click += new System.EventHandler(this.getAllFlightToolStripMenuItem_Click);
             // 
+            // getAllCustomerToolStripMenuItem
+            // 
+            this.getAllCustomerToolStripMenuItem.Name = "getAllCustomerToolStripMenuItem";
+            this.getAllCustomerToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.D5)));
+            this.getAllCustomerToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
+            this.getAllCustomerToolStripMenuItem.Text = "Get All Customer";
+            this.getAllCustomerToolStripMenuItem.Click += new System.EventHandler(this.getAllCustomerToolStripMenuItem_Click);
+            // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
@@ -132,14 +143,14 @@ namespace Assignment10
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // getAllCustomerToolStripMenuItem
+            // updateDataToolStripMenuItem
             // 
-            this.getAllCustomerToolStripMenuItem.Name = "getAllCustomerToolStripMenuItem";
-            this.getAllCustomerToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
-            | System.Windows.Forms.Keys.D5)));
-            this.getAllCustomerToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
-            this.getAllCustomerToolStripMenuItem.Text = "Get All Customer";
-            this.getAllCustomerToolStripMenuItem.Click += new System.EventHandler(this.getAllCustomerToolStripMenuItem_Click);
+            this.updateDataToolStripMenuItem.Name = "updateDataToolStripMenuItem";
+            this.updateDataToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.D6)));
+            this.updateDataToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
+            this.updateDataToolStripMenuItem.Text = "Update Data";
+            this.updateDataToolStripMenuItem.Click += new System.EventHandler(this.updateDataToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -173,6 +184,7 @@ namespace Assignment10
         private System.Windows.Forms.ToolStripMenuItem insertDataToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem getAllDataToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem getAllCustomerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem updateDataToolStripMenuItem;
     }
 }
 

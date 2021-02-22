@@ -39,3 +39,4 @@ D:\Window_programming_course\Assignment10\Assignment10\obj\Debug\Assignment10.Se
 D:\Window_programming_course\Assignment10\Assignment10\obj\Debug\Assignment10.DeleteForm.resources
 D:\Window_programming_course\Assignment10\Assignment10\obj\Debug\Assignment10.GetAllFlight.resources
 D:\Window_programming_course\Assignment10\Assignment10\obj\Debug\Assignment10.GetAllCustomer.resources
+D:\Window_programming_course\Assignment10\Assignment10\obj\Debug\Assignment10.UpdateForm.resources

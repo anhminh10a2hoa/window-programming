@@ -73,6 +73,14 @@ namespace Assignment10
         {
             Application.Exit();
         }
-        
+
+        private void updateDataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            formCounter++;
+            UpdateForm newMDIChild = new UpdateForm(this, connectionString);
+            newMDIChild.Text += " " + formCounter;
+            newMDIChild.MdiParent = this;
+            newMDIChild.Show();
+        }
     }
 }
